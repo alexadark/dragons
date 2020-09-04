@@ -14097,6 +14097,16 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-bebas-neue@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/typeface-bebas-neue/-/typeface-bebas-neue-1.1.3.tgz#2a3b9802fdcfff8f6729f1e5a864ff54ba34b188"
+  integrity sha512-Wf6I9G89Vd3fMJlqH3iD++q4adr8mUgzbzWCaYVwxr8Td08Pdl5Y2vyap61Waswp/4vd+jKj8uHsfhCQqA///A==
+
+typeface-spartan@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/typeface-spartan/-/typeface-spartan-1.1.4.tgz#6ef0ee76a56950ffdb83db5d9fadc34d56910d3d"
+  integrity sha512-NyoeQ9E+80MG26ozA+hvf0NNVOIAC8hfKuZgqP4ojUAa5zvbdmL7P5jNBvQGgbRIz2yQQFKttChwsJg2z3q0gw==
+
 typography-normalize@^0.16.19:
   version "0.16.19"
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.16.19.tgz#58e0cf12466870c5b27006daa051fe7307780660"

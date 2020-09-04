@@ -1,11 +1,13 @@
-const darkGrey = "#4A4A49"
-const lightGrey = "#7C7B7B"
+const grey = "#404B4E"
+const orange = "#F99936"
+const green = "#8CB710"
 
 export const colors = {
-  primary: darkGrey,
-  secondary: lightGrey,
-  text: darkGrey,
+  grey,
+  orange,
+  green,
+  primary: orange,
+  secondary: green,
+  text: grey,
   background: "#fff",
-  purple: "#6567A2",
-  light: "#fbfbfb",
 }

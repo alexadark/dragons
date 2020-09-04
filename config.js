@@ -2,7 +2,7 @@
  * @type {{wordPressUrl: string}}
  */
 const config = {
-  wordPressUrl: `http://starteracf.wst/`,
+  wordPressUrl: `http://dragons.wst/`,
 }
 
 module.exports = config

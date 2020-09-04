@@ -11,12 +11,13 @@ const Page = ({ data }) => {
     homeFields: { homeSteps, heroImage, homeTitle, homeSubtitle },
     quizzFields: { questions },
   } = data.wpPage
-  console.log("data", data.wpPage)
+
+  console.log("image", heroImage)
 
   return (
     <Layout>
       <SEO title={title} />
-      {slug.includes("home") && <Home />}
+      {slug.includes("home") && <Home img={heroImage} />}
       {slug.includes("quizz") && <Quizz />}
     </Layout>
   )

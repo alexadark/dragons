@@ -1,28 +1,23 @@
 export const sharedButtonStyles = {
   boxSizing: "border-box !important",
-  border: "none",
-  color: "white",
+  border: "1px solid",
+  borderColor: "primary",
+  color: "text",
   cursor: "pointer",
-  fontFamily: "body",
+  fontFamily: "heading",
   textTransform: "uppercase",
-  fontSize: "xs",
+  fontSize: 24,
   variant: "transitions.m",
-  letterSpacing: 1,
-  boxShadow: "medium",
+
   lineHeight: "tight",
-  py: "xs",
-  px: "m",
-  borderRadius: "xs",
+  py: 12,
+  px: 25,
+  borderRadius: 10,
   fontWeight: 500,
   display: "inline-block",
 
   "&:hover": {
-    transform: "translateY(-5px)",
-    boxShadow: "hover",
-    color: "white",
-    a: {
-      color: "white",
-    },
+    borderColor: "secondary",
   },
   a: {
     color: "white",
@@ -34,77 +29,12 @@ export const sharedButtonStyles = {
   },
 }
 
-const small = {
-  py: 4,
-  px: "xs",
-  fontSize: "xxs",
-  fontWeight: "bold",
-}
-const outline = {
-  ...sharedButtonStyles,
-  padding: "xxs",
-  bg: "transparent",
-  border: "1px solid",
-  color: "text",
-  fontWeight: "bold",
-  borderColor: "text",
-  transition: ".3s",
-  boxShadow: "none",
-  a: {
-    color: "text",
-  },
-  ":hover:not([disabled])": {
-    borderColor: "primary",
-    bg: "primary",
-    color: "white",
-  },
-}
-
 const primary = {
   ...sharedButtonStyles,
-  bg: "primary",
-}
-
-const secondary = {
-  ...sharedButtonStyles,
-  bg: "secondary",
-}
-const gradientPrimary = {
-  variant: "gradients.primary",
-}
-
-const gradientSecondary = {
-  variant: "gradients.secondary",
 }
 
 export const buttons = {
   primary: {
     ...primary,
-    gradient: {
-      ...primary,
-      ...gradientPrimary,
-    },
-    small: {
-      ...primary,
-      ...small,
-    },
-  },
-  secondary: {
-    ...secondary,
-    gradient: {
-      ...secondary,
-      ...gradientSecondary,
-    },
-    small: {
-      ...secondary,
-      ...small,
-    },
-  },
-  outline: {
-    ...outline,
-    small: {
-      ...outline,
-      ...small,
-    },
   },
 }

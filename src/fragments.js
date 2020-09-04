@@ -4,7 +4,7 @@ export const fragments = graphql`
   fragment dragonHome on WpMediaItem {
     sourceUrl
     localFile {
-      childImageShard {
+      childImageSharp {
         fixed(width: 418, height: 398) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
@@ -15,7 +15,7 @@ export const fragments = graphql`
   fragment dragonResultLargeImage on WpMediaItem {
     sourceUrl
     localFile {
-      childImageShard {
+      childImageSharp {
         fluid(maxWidth: 800, maxHeight: 600) {
           ...GatsbyImageSharpFluid_tracedSVG
         }
@@ -26,7 +26,7 @@ export const fragments = graphql`
   fragment dragonResultSmallImage on WpMediaItem {
     sourceUrl
     localFile {
-      childImageShard {
+      childImageSharp {
         fluid(maxWidth: 250, maxHeight: 250) {
           ...GatsbyImageSharpFluid_tracedSVG
         }
@@ -85,7 +85,7 @@ export const fragments = graphql`
   fragment homeFields on WpPage {
     homeFields {
       heroImage {
-        sourceUrl
+        ...dragonHome
       }
       homeSubtitle
       homeTitle

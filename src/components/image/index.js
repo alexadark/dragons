@@ -10,7 +10,7 @@ export const ImageFluid = ({ img, ...props }) =>
       {...props}
     />
   ) : (
-    <img src={img.localFile.publicURL} alt={img.altText} />
+    <img src={img?.localFile?.publicURL} alt={img?.altText} />
   )
 
 export const ImageFixed = ({ img, ...props }) =>
@@ -21,5 +21,5 @@ export const ImageFixed = ({ img, ...props }) =>
       {...props}
     />
   ) : (
-    <img src={img.localFile.publicURL} alt={img.altText} />
+    <img src={img?.localFile?.publicURL} alt={img?.altText} />
   )

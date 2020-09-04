@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
+import { HomeHero } from "../../../components"
 
-export const Home = () => {
+export const Home = ({ img }) => {
   return (
-    <div>
-      <h1>Home page</h1>
-    </div>
+    <>
+      <HomeHero img={img} />
+    </>
   )
 }

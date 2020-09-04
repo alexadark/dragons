@@ -23,9 +23,7 @@ export const Layout = ({ children }) => {
     <div sx={{ ...styles }}>
       <Global styles={globalStyles} />
       <div>
-        <main>
-          <Container>{children}</Container>
-        </main>
+        <main>{children}</main>
       </div>
     </div>
   )

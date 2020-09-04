@@ -2,14 +2,22 @@
 import { jsx } from "theme-ui"
 import React from "react"
 import { Layout, SEO } from "../../components"
+import { Home, Quizz } from "./pageLayouts"
 
 const Page = ({ data }) => {
-  const { title, content } = data.wpPage
+  const {
+    title,
+    slug,
+    homeFields: { homeSteps, heroImage, homeTitle, homeSubtitle },
+    quizzFields: { questions },
+  } = data.wpPage
+  console.log("data", data.wpPage)
 
   return (
     <Layout>
       <SEO title={title} />
-      <h1 dangerouslySetInnerHTML={{ __html: title }} />
+      {slug.includes("home") && <Home />}
+      {slug.includes("quizz") && <Quizz />}
     </Layout>
   )
 }
@@ -19,8 +27,10 @@ export default Page
 export const pageQuery = graphql`
   query GET_PAGE($uri: String!) {
     wpPage(uri: { eq: $uri }) {
-      content
       title
+      slug
+      ...homeFields
+      ...questions
     }
   }
 `

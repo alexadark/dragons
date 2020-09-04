@@ -8,8 +8,6 @@ import { globalStyles } from "../../styles"
 import { Grommet } from "grommet"
 import { styles } from "./styles"
 
-import { Header, Footer } from "../"
-
 export const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -24,13 +22,11 @@ export const Layout = ({ children }) => {
   return (
     <div sx={{ ...styles }}>
       <Global styles={globalStyles} />
-      <Header siteTitle={data.site.siteMetadata.title} />
       <div>
         <main>
           <Container>{children}</Container>
         </main>
       </div>
-      <Footer />
     </div>
   )
 }

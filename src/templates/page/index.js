@@ -12,13 +12,11 @@ const Page = ({ data }) => {
     quizzFields: { questions },
   } = data.wpPage
 
-  console.log("image", heroImage)
-
   return (
     <Layout>
       <SEO title={title} />
       {slug.includes("home") && <Home img={heroImage} />}
-      {slug.includes("quizz") && <Quizz />}
+      {slug.includes("quizz") && <Quizz questions={questions} />}
     </Layout>
   )
 }

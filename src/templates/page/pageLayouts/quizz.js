@@ -1,7 +1,11 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
 import React from "react"
-import { ProgressBar, SmallDragons } from "../../../components"
+import {
+  ProgressBar,
+  SmallDragons,
+  DragonQuestionSet,
+} from "../../../components"
 
 export const Quizz = ({ questions }) => {
   return (
@@ -17,6 +21,19 @@ export const Quizz = ({ questions }) => {
         </Container>
       </div>
       <SmallDragons questions={questions} />
+      <div>
+        <Container>
+          <p>
+            Check yes for any of the following that apply to you or your
+            ancestors.
+          </p>
+          {questions?.map((dragon, i) => {
+            // console.log("dragon", dragon)
+
+            return <DragonQuestionSet dragonData={dragon} />
+          })}
+        </Container>
+      </div>
     </>
   )
 }

@@ -9,7 +9,6 @@ export const SmallDragons = ({ questions }) => {
         <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
           {questions?.map((item, i) => {
             const { dragonSmallDark, dragonSmallWhite } = item.dragonFields
-            console.log("item", item)
 
             const whiteDragon = dragonSmallWhite?.localFile?.publicURL
             const darkDragon = dragonSmallDark?.localFile?.publicURL

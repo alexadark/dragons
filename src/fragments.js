@@ -72,6 +72,7 @@ export const fragments = graphql`
     quizzFields {
       questions {
         ... on WpDragon {
+          title
           dragonFields {
             dragonSmallDark {
               localFile {

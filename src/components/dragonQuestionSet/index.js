@@ -15,10 +15,6 @@ export const DragonQuestionSet = ({ dragonData }) => {
 
   const { register, handleSubmit, watch, errors } = useForm()
 
-  // const [answers, setAnswers] = useState({})
-
-  // const [detected, setDetected] = useState(false)
-
   const [dragon, setDragon] = useState({
     title,
     answers: {},
@@ -26,9 +22,6 @@ export const DragonQuestionSet = ({ dragonData }) => {
   })
 
   const onSubmit = async data => {
-    // setDragon({ ...dragon, answers: data })
-    console.log("data", data)
-
     const isDragonDetected = async answers =>
       (await Object.values(answers).filter(item => item === "true").length) >=
       limit
@@ -38,12 +31,9 @@ export const DragonQuestionSet = ({ dragonData }) => {
       answers: data,
       detected: isDragonDetected(data) && true,
     })
-    console.log("dragon", dragon)
 
-    // // await console.log("detected", true)
-    // setDragon({ title, answers, detected })
-    // // await console.log("dragon", dragon)
-    // ls(title, { answers, detected })
+    await console.log("dragon", dragon)
+    //TODO: why it doesn't work
   }
 
   return (

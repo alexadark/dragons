@@ -15,25 +15,35 @@ export const DragonQuestionSet = ({ dragonData }) => {
 
   const { register, handleSubmit, watch, errors } = useForm()
 
-  const [answers, setAnswers] = useState({})
+  // const [answers, setAnswers] = useState({})
 
-  const [detected, setDetected] = useState(false)
+  // const [detected, setDetected] = useState(false)
 
-  const [dragon, setDragon] = useState({})
+  const [dragon, setDragon] = useState({
+    title,
+    answers: {},
+    detected: false,
+  })
 
   const onSubmit = async data => {
-    setAnswers(data)
+    // setDragon({ ...dragon, answers: data })
+    console.log("data", data)
 
     const isDragonDetected = async answers =>
       (await Object.values(answers).filter(item => item === "true").length) >=
       limit
 
-    isDragonDetected(answers) && (await setDetected(true))
+    await setDragon({
+      ...dragon,
+      answers: data,
+      detected: isDragonDetected(data) && true,
+    })
+    console.log("dragon", dragon)
 
-    // await console.log("detected", true)
-    setDragon({ title, answers, detected })
-    // await console.log("dragon", dragon)
-    ls(title, { answers, detected })
+    // // await console.log("detected", true)
+    // setDragon({ title, answers, detected })
+    // // await console.log("dragon", dragon)
+    // ls(title, { answers, detected })
   }
 
   return (
@@ -71,6 +81,9 @@ export const DragonQuestionSet = ({ dragonData }) => {
                     name={question}
                     value={false}
                     ref={register}
+                    sx={{
+                      "&:checked": { bg: "orange", width: 20, height: 20 },
+                    }}
                   />
                   <label for="no">NO</label>
                 </div>

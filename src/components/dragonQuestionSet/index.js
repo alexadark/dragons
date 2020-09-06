@@ -3,6 +3,7 @@ import { jsx, Flex } from "theme-ui"
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
+import { radioStyles } from "./styles"
 
 export const DragonQuestionSet = ({ dragonData }) => {
   const {
@@ -49,59 +50,26 @@ export const DragonQuestionSet = ({ dragonData }) => {
               sx={{ justifyContent: "space-between" }}
             >
               <div sx={{ maxWidth: 630, py: 20 }}>{question} </div>
-              <Flex>
-                <div>
+              <Flex sx={{ ...radioStyles }}>
+                <div className="radioContainer">
                   <input
                     type="radio"
                     id="yes"
                     name={question}
                     value={true}
                     ref={register}
-                    sx={{
-                      width: 20,
-                      height: 20,
-                      bg: "grey",
-                      "&:checked": { bg: "orange" },
-                    }}
                   />
-
-                  <label
-                    for="yes"
-                    sx={{
-                      mr: 20,
-                      px: 20,
-                      py: 10,
-                      border: "1px solid black",
-                    }}
-                  >
-                    YES
-                  </label>
+                  <label for="yes">YES</label>
                 </div>
-                <div>
+                <div className="radioContainer">
                   <input
                     type="radio"
                     id="no"
                     name={question}
                     value={false}
                     ref={register}
-                    sx={{
-                      width: 20,
-                      height: 20,
-                      bg: "grey",
-                      "&:checked": { bg: "orange" },
-                    }}
                   />
-                  <label
-                    for="no"
-                    sx={{
-                      mr: 20,
-                      px: 20,
-                      py: 10,
-                      border: "1px solid black",
-                    }}
-                  >
-                    NO
-                  </label>
+                  <label for="no">NO</label>
                 </div>
               </Flex>
             </Flex>

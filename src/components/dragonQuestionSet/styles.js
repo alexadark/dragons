@@ -22,8 +22,12 @@ export const radioStyles = {
     fontWeight: 600,
     pointerEvents: "none",
     fontSize: 14,
+    cursor: "pointer",
+    variant: "transitions.s",
+    pt: 3,
   },
   input: {
+    cursor: "pointer",
     "&:checked": {
       "&+label": {
         bg: "green",

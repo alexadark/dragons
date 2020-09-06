@@ -23,7 +23,7 @@ export const Quizz = ({ questions }) => {
       <SmallDragons questions={questions} />
       <div>
         <Container>
-          <p>
+          <p sx={{ fontWeight: "bold", py: 40 }}>
             Check yes for any of the following that apply to you or your
             ancestors.
           </p>

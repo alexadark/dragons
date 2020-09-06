@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import React, { useState } from "react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
 import { radioStyles } from "./styles"
@@ -89,7 +89,33 @@ export const DragonQuestionSet = ({ dragonData }) => {
             </Flex>
           )
         })}
-        <input type="submit" value="next" />
+        <Flex sx={{ justifyContent: "flex-end" }}>
+          <input
+            type="submit"
+            value="next"
+            sx={{
+              width: 215,
+              height: 51,
+              border: "2px solid",
+              borderColor: "orange",
+              fontSize: 24,
+              fontFamily: "heading",
+              textTransform: "uppercase",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 14,
+              mt: 25,
+              variant: "transitions.s",
+              bg: "transparent",
+              cursor: "pointer",
+              "&:hover": {
+                bg: "orange",
+                color: "#fff",
+              },
+            }}
+          />
+        </Flex>
       </form>
     </div>
   )

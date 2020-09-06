@@ -38,7 +38,7 @@ export const DragonQuestionSet = ({ dragonData }) => {
   }
 
   return (
-    <div key={title}>
+    <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         sx={{
@@ -73,7 +73,7 @@ export const DragonQuestionSet = ({ dragonData }) => {
                     value={true}
                     ref={register}
                   />
-                  <label for="yes">YES</label>
+                  <label htmlFor="yes">YES</label>
                 </div>
                 <div className="radioContainer">
                   <input
@@ -83,7 +83,7 @@ export const DragonQuestionSet = ({ dragonData }) => {
                     value={false}
                     ref={register}
                   />
-                  <label for="no">NO</label>
+                  <label htmlFor="no">NO</label>
                 </div>
               </Flex>
             </Flex>

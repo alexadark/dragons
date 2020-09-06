@@ -28,9 +28,7 @@ export const Quizz = ({ questions }) => {
             ancestors.
           </p>
           {questions?.map((dragon, i) => {
-            // console.log("dragon", dragon)
-
-            return <DragonQuestionSet dragonData={dragon} />
+            return <DragonQuestionSet dragonData={dragon} key={dragon.title} />
           })}
         </Container>
       </div>

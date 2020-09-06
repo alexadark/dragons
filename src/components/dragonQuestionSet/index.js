@@ -39,17 +39,31 @@ export const DragonQuestionSet = ({ dragonData }) => {
 
   return (
     <div key={title}>
-      <h3>{title}</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{
+          ".question": {
+            "&:nth-child(odd)": {
+              bg: "lightGrey",
+            },
+          },
+        }}
+      >
         {dragonQuestions?.map((item, i) => {
           const question = item.questions
           return (
             <Flex
               className="question"
               key={i}
-              sx={{ justifyContent: "space-between" }}
+              sx={{
+                justifyContent: "space-between",
+                alignItems: "center",
+                pl: 35,
+                pr: 50,
+                py: 15,
+              }}
             >
-              <div sx={{ maxWidth: 630, py: 20 }}>{question} </div>
+              <div sx={{ maxWidth: 630 }}>{question} </div>
               <Flex sx={{ ...radioStyles }}>
                 <div className="radioContainer">
                   <input

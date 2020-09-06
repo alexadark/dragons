@@ -15,6 +15,8 @@ import {
 export const Quizz = ({ questions }) => {
   // console.log("state", useContext(GlobalStateContext))
   // console.log("dispatch", useContext(GlobalDispatchContext))
+  const state = useContext(GlobalStateContext)
+  const progress = (100 / questions.length) * (state.currentQuestions + 1)
 
   return (
     <>
@@ -24,7 +26,7 @@ export const Quizz = ({ questions }) => {
             <h1 sx={{ color: "#fff", fontSize: 36, letterSpacing: 2, m: 0 }}>
               Know Your HIDDEN Dragons Questionnaire
             </h1>
-            <ProgressBar progress="7.69%" />
+            <ProgressBar progress={`${progress}%`} />
           </Flex>
         </Container>
       </div>

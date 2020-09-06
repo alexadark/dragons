@@ -60,7 +60,14 @@ export const DragonQuestionSet = ({ dragonData }) => {
             >
               <div sx={{ maxWidth: 630, py: 20 }}>{question} </div>
               <Flex>
-                <div>
+                <label
+                  sx={{
+                    mr: 20,
+                    px: 20,
+                    py: 10,
+                    border: "1px solid black",
+                  }}
+                >
                   <input
                     type="radio"
                     id="yes"
@@ -71,10 +78,17 @@ export const DragonQuestionSet = ({ dragonData }) => {
                       "&:checked": { bg: "orange", width: 20, height: 20 },
                     }}
                   />
-                  <label for="yes">YES</label>
-                </div>
+                  YES
+                </label>
 
-                <div>
+                <label
+                  sx={{
+                    mr: 20,
+                    px: 20,
+                    py: 10,
+                    border: "1px solid black",
+                  }}
+                >
                   <input
                     type="radio"
                     id="no"
@@ -85,8 +99,8 @@ export const DragonQuestionSet = ({ dragonData }) => {
                       "&:checked": { bg: "orange", width: 20, height: 20 },
                     }}
                   />
-                  <label for="no">NO</label>
-                </div>
+                  NO
+                </label>
               </Flex>
             </Flex>
           )

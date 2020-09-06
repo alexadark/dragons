@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
-import React from "react"
+import React, { useContext } from "react"
+import { GlobalStateContext } from "../../context/globalContextProvider"
 
 export const SmallDragons = ({ questions }) => {
+  const state = useContext(GlobalStateContext)
   return (
     <div sx={{ bg: "green", py: 20 }}>
       <Container>
@@ -12,10 +14,11 @@ export const SmallDragons = ({ questions }) => {
 
             const whiteDragon = dragonSmallWhite?.localFile?.publicURL
             const darkDragon = dragonSmallDark?.localFile?.publicURL
-            // const smallDragonImage = done ? darkDragon : whiteDragon
+            const done = state.currentQuestions > i
+            const smallDragonImage = done ? darkDragon : whiteDragon
             return (
               <div key={i}>
-                <img src={whiteDragon} alt="" sx={{ m: 0 }} />
+                <img src={smallDragonImage} alt="" sx={{ m: 0 }} />
               </div>
             )
           })}

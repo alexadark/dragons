@@ -7,14 +7,9 @@ import {
   DragonQuestionSet,
 } from "../../../components"
 
-import {
-  GlobalDispatchContext,
-  GlobalStateContext,
-} from "../../../context/globalContextProvider"
+import { GlobalStateContext } from "../../../context/globalContextProvider"
 
 export const Quizz = ({ questions }) => {
-  // console.log("state", useContext(GlobalStateContext))
-  // console.log("dispatch", useContext(GlobalDispatchContext))
   const state = useContext(GlobalStateContext)
   const progress = (100 / questions.length) * (state.currentQuestions + 1)
 

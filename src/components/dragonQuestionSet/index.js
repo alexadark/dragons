@@ -14,7 +14,7 @@ export const DragonQuestionSet = ({ questions }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
 
-  const { currentQuestions, answers, detectedDragons } = state
+  const { currentQuestions, answers } = state
 
   const {
     dragonFields: { dragonQuestions },
@@ -41,14 +41,7 @@ export const DragonQuestionSet = ({ questions }) => {
     })
   }
 
-  // const setDetectedDragons = async data => {
-  //   await dispatch({
-  //     type: "SET_DETECTED_DRAGONS",
-  //     detectedDragons,
-  //   })
-  // }
-
-  const next = () => {
+  const next = data => {
     if (currentQuestions + 1 < questions.length) {
       dispatch({
         type: "SET_CURRENT_QUESTIONS",
@@ -62,9 +55,8 @@ export const DragonQuestionSet = ({ questions }) => {
 
   const onSubmit = data => {
     setAnswers(data)
-
     reset()
-    next()
+    next(data)
   }
 
   return (
@@ -103,7 +95,7 @@ export const DragonQuestionSet = ({ questions }) => {
                     value={true}
                     ref={register}
                   />
-                  <label htmlFor="yes">YES</label>
+                  <label for="yes">YES</label>
                 </div>
                 <div className="radioContainer">
                   <input
@@ -113,7 +105,7 @@ export const DragonQuestionSet = ({ questions }) => {
                     value={false}
                     ref={register}
                   />
-                  <label htmlFor="no">NO</label>
+                  <label for="no">NO</label>
                 </div>
               </Flex>
             </Flex>

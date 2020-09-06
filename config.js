@@ -2,7 +2,7 @@
  * @type {{wordPressUrl: string}}
  */
 const config = {
-  wordPressUrl: `http://dragons.wst/`,
+  wordPressUrl: `https://dragons.gatsby-wp.com/`,
 }
 
 module.exports = config

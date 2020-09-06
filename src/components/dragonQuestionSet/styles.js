@@ -14,6 +14,8 @@ export const radioStyles = {
   },
   label: {
     borderRadius: 14,
+    border: "2px solid",
+    borderColor: "borderColor",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -22,9 +24,12 @@ export const radioStyles = {
     fontSize: 14,
   },
   input: {
-    border: "2px solid",
-    borderColor: "lightGRey",
-    borderRadius: 14,
-    "&:checked": { bg: "green", borderColor: "green" },
+    "&:checked": {
+      "&+label": {
+        bg: "green",
+        borderColor: "green",
+        color: "#fff",
+      },
+    },
   },
 }

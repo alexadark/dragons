@@ -1,13 +1,21 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
-import React from "react"
+import React, { useState, useEffect, useContext } from "react"
 import {
   ProgressBar,
   SmallDragons,
   DragonQuestionSet,
 } from "../../../components"
 
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../../../context/globalContextProvider"
+
 export const Quizz = ({ questions }) => {
+  // console.log("state", useContext(GlobalStateContext))
+  // console.log("dispatch", useContext(GlobalDispatchContext))
+
   return (
     <>
       <div sx={{ bg: "grey", py: 25 }}>
@@ -27,9 +35,7 @@ export const Quizz = ({ questions }) => {
             Check yes for any of the following that apply to you or your
             ancestors.
           </p>
-          {questions?.map((dragon, i) => {
-            return <DragonQuestionSet dragonData={dragon} key={dragon.title} />
-          })}
+          <DragonQuestionSet questions={questions} />
         </Container>
       </div>
     </>

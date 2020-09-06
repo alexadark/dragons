@@ -5,7 +5,6 @@ export const GlobalDispatchContext = createContext()
 
 const initialState = {
   currentQuestions: 0,
-  currentAnswers: { title: "", answers: {}, detected: false },
   answers: [],
   showResults: false,
 }
@@ -16,6 +15,13 @@ function reducer(state, action) {
       return {
         ...state,
         currentQuestions: action.currentQuestions,
+      }
+    }
+
+    case "SET_ANSWERS": {
+      return {
+        ...state,
+        answers: action.answers,
       }
     }
 

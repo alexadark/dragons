@@ -1,40 +1,62 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
+import { navigate } from "gatsby"
 import { radioStyles } from "./styles"
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../../context/globalContextProvider"
 
-export const DragonQuestionSet = ({ dragonData }) => {
+export const DragonQuestionSet = ({ questions }) => {
+  const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
+
+  const { currentQuestions, answers } = state
+
   const {
     dragonFields: { dragonQuestions },
-    title,
-  } = dragonData
+  } = questions[currentQuestions]
 
   const limit = dragonQuestions.length / 2
-  console.log("limit", limit)
 
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, watch, errors, reset } = useForm()
 
-  const [dragon, setDragon] = useState({
-    title,
-    answers: {},
-    detected: false,
-  })
+  const isDragonDetected = answers =>
+    Object.values(answers).filter(item => item === "true").length >= limit
 
-  const onSubmit = async data => {
-    const isDragonDetected = async answers =>
-      (await Object.values(answers).filter(item => item === "true").length) >=
-      limit
-
-    await setDragon({
-      ...dragon,
-      answers: data,
-      detected: isDragonDetected(data) && true,
+  const setAnswers = async data => {
+    await dispatch({
+      type: "SET_ANSWERS",
+      answers: [
+        ...answers,
+        {
+          title: questions[currentQuestions].title,
+          answers: data,
+          detected: isDragonDetected(data) && true,
+        },
+      ],
     })
+  }
 
-    await console.log("dragon", dragon)
-    //TODO: why it doesn't work
+  const next = () => {
+    if (currentQuestions + 1 < questions.length) {
+      dispatch({
+        type: "SET_CURRENT_QUESTIONS",
+        currentQuestions: currentQuestions + 1,
+      })
+    } else {
+      ls("answers", answers)
+      navigate("/results")
+    }
+  }
+
+  const onSubmit = data => {
+    setAnswers(data)
+    reset()
+    next()
   }
 
   return (

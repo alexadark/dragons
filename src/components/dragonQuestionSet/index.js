@@ -60,14 +60,7 @@ export const DragonQuestionSet = ({ dragonData }) => {
             >
               <div sx={{ maxWidth: 630, py: 20 }}>{question} </div>
               <Flex>
-                <label
-                  sx={{
-                    mr: 20,
-                    px: 20,
-                    py: 10,
-                    border: "1px solid black",
-                  }}
-                >
+                <div>
                   <input
                     type="radio"
                     id="yes"
@@ -75,20 +68,26 @@ export const DragonQuestionSet = ({ dragonData }) => {
                     value={true}
                     ref={register}
                     sx={{
-                      "&:checked": { bg: "orange", width: 20, height: 20 },
+                      width: 20,
+                      height: 20,
+                      bg: "grey",
+                      "&:checked": { bg: "orange" },
                     }}
                   />
-                  YES
-                </label>
 
-                <label
-                  sx={{
-                    mr: 20,
-                    px: 20,
-                    py: 10,
-                    border: "1px solid black",
-                  }}
-                >
+                  <label
+                    for="yes"
+                    sx={{
+                      mr: 20,
+                      px: 20,
+                      py: 10,
+                      border: "1px solid black",
+                    }}
+                  >
+                    YES
+                  </label>
+                </div>
+                <div>
                   <input
                     type="radio"
                     id="no"
@@ -96,11 +95,24 @@ export const DragonQuestionSet = ({ dragonData }) => {
                     value={false}
                     ref={register}
                     sx={{
-                      "&:checked": { bg: "orange", width: 20, height: 20 },
+                      width: 20,
+                      height: 20,
+                      bg: "grey",
+                      "&:checked": { bg: "orange" },
                     }}
                   />
-                  NO
-                </label>
+                  <label
+                    for="no"
+                    sx={{
+                      mr: 20,
+                      px: 20,
+                      py: 10,
+                      border: "1px solid black",
+                    }}
+                  >
+                    NO
+                  </label>
+                </div>
               </Flex>
             </Flex>
           )

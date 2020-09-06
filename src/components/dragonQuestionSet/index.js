@@ -2,6 +2,7 @@
 import { jsx, Flex } from "theme-ui"
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
+import ls from "local-storage"
 
 export const DragonQuestionSet = ({ dragonData }) => {
   const {
@@ -15,30 +16,24 @@ export const DragonQuestionSet = ({ dragonData }) => {
   const { register, handleSubmit, watch, errors } = useForm()
 
   const [answers, setAnswers] = useState({})
-  // console.log(
-  //   "dragon",
-  //   Object.values(dragon.questions).filter(item => item === "true")
-
-  // )
 
   const [detected, setDetected] = useState(false)
 
   const [dragon, setDragon] = useState({})
 
   const onSubmit = async data => {
-    console.log("data", data)
-
     setAnswers(data)
-    await console.log("answers", answers)
 
-    // const detected =
-    //   Object.values(answers).filter(item => item === "true").length >= limit
-    // console.log("detected", detected)
+    const isDragonDetected = async answers =>
+      (await Object.values(answers).filter(item => item === "true").length) >=
+      limit
 
-    // detected && (await setDetected(true))
+    isDragonDetected(answers) && (await setDetected(true))
+
     // await console.log("detected", true)
-    // await setDragon({ title, answers, detected })
+    setDragon({ title, answers, detected })
     // await console.log("dragon", dragon)
+    ls(title, { answers, detected })
   }
 
   return (
@@ -55,32 +50,21 @@ export const DragonQuestionSet = ({ dragonData }) => {
             >
               <div sx={{ maxWidth: 630, py: 20 }}>{question} </div>
               <Flex>
-                <label
-                  sx={{
-                    mr: 20,
-                    px: 20,
-                    py: 10,
-                    border: "1px solid black",
-                  }}
-                >
+                <div>
                   <input
                     type="radio"
                     id="yes"
                     name={question}
                     value={true}
                     ref={register}
+                    sx={{
+                      "&:checked": { bg: "orange", width: 20, height: 20 },
+                    }}
                   />
-                  YES
-                </label>
+                  <label for="yes">YES</label>
+                </div>
 
-                <label
-                  sx={{
-                    mr: 20,
-                    px: 20,
-                    py: 10,
-                    border: "1px solid black",
-                  }}
-                >
+                <div>
                   <input
                     type="radio"
                     id="no"
@@ -88,8 +72,8 @@ export const DragonQuestionSet = ({ dragonData }) => {
                     value={false}
                     ref={register}
                   />
-                  NO
-                </label>
+                  <label for="no">NO</label>
+                </div>
               </Flex>
             </Flex>
           )

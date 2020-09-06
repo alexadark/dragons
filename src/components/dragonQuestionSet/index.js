@@ -14,7 +14,7 @@ export const DragonQuestionSet = ({ questions }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
 
-  const { currentQuestions, answers } = state
+  const { currentQuestions, answers, detectedDragons } = state
 
   const {
     dragonFields: { dragonQuestions },
@@ -41,6 +41,13 @@ export const DragonQuestionSet = ({ questions }) => {
     })
   }
 
+  // const setDetectedDragons = async data => {
+  //   await dispatch({
+  //     type: "SET_DETECTED_DRAGONS",
+  //     detectedDragons,
+  //   })
+  // }
+
   const next = () => {
     if (currentQuestions + 1 < questions.length) {
       dispatch({
@@ -55,6 +62,7 @@ export const DragonQuestionSet = ({ questions }) => {
 
   const onSubmit = data => {
     setAnswers(data)
+
     reset()
     next()
   }

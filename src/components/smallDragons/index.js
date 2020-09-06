@@ -2,23 +2,52 @@
 import { jsx, Container, Flex } from "theme-ui"
 import React, { useContext } from "react"
 import { GlobalStateContext } from "../../context/globalContextProvider"
+import { Checkmark } from "grommet-icons"
 
 export const SmallDragons = ({ questions }) => {
   const state = useContext(GlobalStateContext)
+  const detectedDragons = state.answers
+    .filter(item => item.detected)
+    .map(item => item.title)
+
   return (
     <div sx={{ bg: "green", py: 20 }}>
       <Container>
         <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
           {questions?.map((item, i) => {
-            const { dragonSmallDark, dragonSmallWhite } = item.dragonFields
+            const {
+              title,
+              dragonFields: { dragonSmallDark, dragonSmallWhite },
+            } = item
+
+            const showDetected = detectedDragons.includes(title)
+              ? "visble"
+              : "hidden"
 
             const whiteDragon = dragonSmallWhite?.localFile?.publicURL
             const darkDragon = dragonSmallDark?.localFile?.publicURL
             const done = state.currentQuestions > i
             const smallDragonImage = done ? darkDragon : whiteDragon
             return (
-              <div key={i}>
+              <div key={i} sx={{ position: "relative" }}>
                 <img src={smallDragonImage} alt="" sx={{ m: 0 }} />
+                <div
+                  className="detected"
+                  sx={{
+                    position: "absolute",
+                    left: 10,
+                    top: 15,
+                    visibility: `${showDetected}`,
+                  }}
+                >
+                  <Checkmark
+                    color="#fff"
+                    sx={{ polyline: { strokeWidth: 5 } }}
+                  />
+                  <div sx={{ color: "#fff", fontSize: 8, fontWeight: "bold" }}>
+                    DETECTED
+                  </div>
+                </div>
               </div>
             )
           })}

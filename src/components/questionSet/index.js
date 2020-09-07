@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import { useState, useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
 import { navigate } from "gatsby"
@@ -41,6 +41,10 @@ export const QuestionSet = ({ dragons }) => {
     })
   }
 
+  useEffect(() => {
+    ls("localAnswers", answers)
+  }, [state])
+
   const next = () => {
     if (currentQuestions + 1 < dragons.length) {
       dispatch({
@@ -48,7 +52,6 @@ export const QuestionSet = ({ dragons }) => {
         currentQuestions: currentQuestions + 1,
       })
     } else {
-      ls("answers", answers)
       navigate("/results")
     }
   }

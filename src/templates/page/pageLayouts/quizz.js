@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
-import React, { useState, useEffect, useContext } from "react"
+import React, { useContext } from "react"
 import {
   ProgressBar,
   SmallDragons,

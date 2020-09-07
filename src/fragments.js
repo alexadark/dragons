@@ -73,7 +73,7 @@ export const fragments = graphql`
       dragons {
         ... on WpDragon {
           title
-          id
+          databaseId
           featuredImage {
             node {
               ...dragonResultLargeImage

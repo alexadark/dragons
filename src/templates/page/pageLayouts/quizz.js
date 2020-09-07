@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
+import ls from "local-storage"
 import { ProgressBar, SmallDragons, QuestionSet } from "../../../components"
 
 import { GlobalStateContext } from "../../../context/globalContextProvider"
@@ -8,6 +9,10 @@ import { GlobalStateContext } from "../../../context/globalContextProvider"
 export const Quizz = ({ dragons }) => {
   const state = useContext(GlobalStateContext)
   const progress = (100 / dragons.length) * (state.currentQuestions + 1)
+
+  useEffect(() => {
+    ls("allDragons", dragons)
+  }, [])
 
   return (
     <>

@@ -4,7 +4,7 @@ import React, { useContext } from "react"
 import { GlobalStateContext } from "../../context/globalContextProvider"
 import { Checkmark } from "grommet-icons"
 
-export const SmallDragons = ({ questions }) => {
+export const SmallDragons = ({ dragons }) => {
   const state = useContext(GlobalStateContext)
   const detectedDragons = state.answers
     .filter(item => item.detected)
@@ -14,7 +14,7 @@ export const SmallDragons = ({ questions }) => {
     <div sx={{ bg: "green", py: 20 }}>
       <Container>
         <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
-          {questions?.map((item, i) => {
+          {dragons?.map((item, i) => {
             const {
               title,
               dragonFields: { dragonSmallDark, dragonSmallWhite },

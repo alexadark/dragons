@@ -1,17 +1,13 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
 import React, { useContext } from "react"
-import {
-  ProgressBar,
-  SmallDragons,
-  DragonQuestionSet,
-} from "../../../components"
+import { ProgressBar, SmallDragons, QuestionSet } from "../../../components"
 
 import { GlobalStateContext } from "../../../context/globalContextProvider"
 
-export const Quizz = ({ questions }) => {
+export const Quizz = ({ dragons }) => {
   const state = useContext(GlobalStateContext)
-  const progress = (100 / questions.length) * (state.currentQuestions + 1)
+  const progress = (100 / dragons.length) * (state.currentQuestions + 1)
 
   return (
     <>
@@ -25,14 +21,14 @@ export const Quizz = ({ questions }) => {
           </Flex>
         </Container>
       </div>
-      <SmallDragons questions={questions} />
+      <SmallDragons dragons={dragons} />
       <div>
         <Container>
           <p sx={{ fontWeight: "bold", py: 40 }}>
             Check yes for any of the following that apply to you or your
             ancestors.
           </p>
-          <DragonQuestionSet questions={questions} />
+          <QuestionSet dragons={dragons} />
         </Container>
       </div>
     </>

@@ -10,7 +10,7 @@ import {
   GlobalStateContext,
 } from "../../context/globalContextProvider"
 
-export const DragonQuestionSet = ({ questions }) => {
+export const QuestionSet = ({ dragons }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
 
@@ -18,7 +18,7 @@ export const DragonQuestionSet = ({ questions }) => {
 
   const {
     dragonFields: { dragonQuestions },
-  } = questions[currentQuestions]
+  } = dragons[currentQuestions]
 
   const limit = dragonQuestions.length / 2
 
@@ -33,7 +33,7 @@ export const DragonQuestionSet = ({ questions }) => {
       answers: [
         ...answers,
         {
-          title: questions[currentQuestions].title,
+          title: dragons[currentQuestions].title,
           answers: data,
           detected: isDragonDetected(data) && true,
         },
@@ -41,8 +41,8 @@ export const DragonQuestionSet = ({ questions }) => {
     })
   }
 
-  const next = data => {
-    if (currentQuestions + 1 < questions.length) {
+  const next = () => {
+    if (currentQuestions + 1 < dragons.length) {
       dispatch({
         type: "SET_CURRENT_QUESTIONS",
         currentQuestions: currentQuestions + 1,

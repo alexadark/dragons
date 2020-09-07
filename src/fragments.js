@@ -68,12 +68,24 @@ export const fragments = graphql`
     }
   }
 
-  fragment questions on WpPage {
-    quizzFields {
-      questions {
+  fragment allDragons on WpPage {
+    allDragons {
+      dragons {
         ... on WpDragon {
           title
+          id
+          featuredImage {
+            node {
+              ...dragonResultLargeImage
+            }
+          }
           dragonFields {
+            dragonMovies
+            dragonMoviesTitle
+            dragonReactions
+            dragonTriggers
+            dragonorigins
+            dragonsTaming
             dragonSmallDark {
               localFile {
                 publicURL

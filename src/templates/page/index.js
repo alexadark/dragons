@@ -1,22 +1,28 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { Layout, SEO } from "../../components"
 import { Home, Quizz } from "./pageLayouts"
+import { GlobalDispatchContext } from "../../context/globalContextProvider"
 
 const Page = ({ data }) => {
   const {
     title,
     slug,
     homeFields: { homeSteps, heroImage, homeTitle, homeSubtitle },
-    quizzFields: { questions },
+    allDragons: { dragons },
   } = data.wpPage
+
+  const dispatch = useContext(GlobalDispatchContext)
+  useEffect(() => {
+    dispatch({})
+  }, [])
 
   return (
     <Layout>
       <SEO title={title} />
       {slug.includes("home") && <Home img={heroImage} />}
-      {slug.includes("quizz") && <Quizz questions={questions} />}
+      {slug.includes("quizz") && <Quizz questions={dragons} />}
     </Layout>
   )
 }
@@ -29,7 +35,7 @@ export const pageQuery = graphql`
       title
       slug
       ...homeFields
-      ...questions
+      ...allDragons
     }
   }
 `

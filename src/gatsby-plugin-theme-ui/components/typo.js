@@ -8,7 +8,7 @@ export const fonts = {
 export const fontWeights = {
   body: 400,
   heading: "bold",
-  bold: 700,
+  bold: 500,
   black: 900,
 }
 
@@ -18,7 +18,7 @@ export const fontSizes = {
   s: rem("16px"),
   m: rem("18px"),
   l: rem("24px"),
-  xl: rem("32px"),
+  xl: rem("36px"),
   xxl: rem("48px"),
   Big: rem("64px"),
   Bigger: rem("96px"),
@@ -58,7 +58,7 @@ export const p = {
 
 export const h1 = {
   ...heading,
-  fontSize: ["xl", "xxl"],
+  fontSize: ["xl"],
   mt: "xxs",
 }
 export const h2 = {

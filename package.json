@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Alexandra Spalato <alexaspalato@gmail.com>",
   "dependencies": {
+    "@apollo/client": "^3.1.4",
     "@emotion/core": "^10.0.35",
     "@theme-ui/color": "^0.3.1",
     "@theme-ui/components": "^0.3.1",
@@ -22,6 +23,7 @@
     "gatsby-transformer-sharp": "^2.5.13",
     "grommet": "^2.15.0",
     "grommet-icons": "^4.4.0",
+    "isomorphic-fetch": "^2.2.1",
     "local-storage": "^2.0.0",
     "polished": "^3.6.6",
     "prop-types": "^15.7.2",

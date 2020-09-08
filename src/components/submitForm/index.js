@@ -23,12 +23,16 @@ const SEND_EMAIL = gql`
     }
   }
 `
+export const handleError = err => {
+  console.log(`oh noooo something went wrong!!!! 💩`)
+  console.log(err)
+}
 
 export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
   const resultsIds = detectedDragonsData?.map(dragon => dragon.databaseId)
 
   const [resultMutation] = useMutation(RESULT_MUTATION)
-  const [sendEmail] = useMutation(SEND_EMAIL)
+  const [sendEmail, { error, data }] = useMutation(SEND_EMAIL)
 
   const createResultsInput = data => {
     const { email, firstName } = data
@@ -54,18 +58,19 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
 
   const { register, handleSubmit, watch, errors, reset } = useForm()
 
-  const onSubmit = async data => {
+  const onSubmit = async mailData => {
     await resultMutation({
       variables: {
-        input: createResultsInput(data),
+        input: createResultsInput(mailData),
       },
-    })
-    await sendEmail({
+    }).catch(handleError)
+    const { data, errors } = await sendEmail({
       variables: {
-        input: createEmailInput(data),
+        input: createEmailInput(mailData),
       },
     })
     reset()
+    console.log("data", data)
   }
   return (
     <>

@@ -94,21 +94,21 @@ export const QuestionSet = ({ dragons }) => {
                   <input
                     type="radio"
                     id="yes"
-                    name={question}
+                    name={`question-${currentQuestions}-${i}`}
                     value={true}
                     ref={register}
                   />
-                  <label for="yes">YES</label>
+                  <label htmlFor="yes">YES</label>
                 </div>
                 <div className="radioContainer">
                   <input
                     type="radio"
                     id="no"
-                    name={question}
+                    name={`question-${currentQuestions}-${i}`}
                     value={false}
                     ref={register}
                   />
-                  <label for="no">NO</label>
+                  <label htmlFor="no">NO</label>
                 </div>
               </Flex>
             </Flex>

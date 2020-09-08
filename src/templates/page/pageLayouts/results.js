@@ -34,7 +34,10 @@ export const Results = () => {
       </div>
       <Container sx={{ mt: 35 }}>
         <SmallDetectedDragons detectedDragonsData={detectedDragonsData} />
-        <SubmitForm detectedDragonsData={detectedDragonsData} />
+        <SubmitForm
+          detectedDragonsData={detectedDragonsData}
+          localAnswers={localAnswers}
+        />
       </Container>
     </>
   )

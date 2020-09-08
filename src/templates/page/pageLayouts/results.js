@@ -8,6 +8,17 @@ import {
 } from "../../../context/globalContextProvider"
 import { SmallDetectedDragons } from "../../../components"
 import { useForm } from "react-hook-form"
+import { useMutation, gql } from "@apollo/client"
+import { v4 as uuidv4 } from "uuid"
+
+const ANSWER_MUTATION = gql`
+  mutation($input: ResultMutationInput!) {
+    resultMutation(input: $input) {
+      resultSubmitted
+      clientMutationId
+    }
+  }
+`
 
 export const Results = () => {
   const allDragons = ls("allDragons")
@@ -15,6 +26,31 @@ export const Results = () => {
   const state = useContext(GlobalStateContext)
 
   const localAnswers = ls("localAnswers")
+  console.log(
+    "answers",
+    localAnswers.map(answer => <p>{answer}</p>)
+  )
+
+  const resultTitles = localAnswers
+    ?.filter(answer => answer.detected)
+    .map(item => item.title)
+  const resultsIds = allDragons
+    .filter(dragon => resultTitles.includes(dragon.title))
+    .map(dragon => dragon.databaseId)
+  console.log("resultsId", resultsIds)
+
+  const [resultMutation] = useMutation(ANSWER_MUTATION)
+
+  const createInput = data => {
+    const { email, firstName } = data
+    return {
+      clientMutationId: uuidv4(),
+      emailInput: email,
+      firstNameInput: firstName,
+      // answersInput: localAnswers.map(answer => <p>{answer}</p>),
+      resultsInput: resultsIds,
+    }
+  }
 
   const detectedDragonsTitles = localAnswers
     ?.filter(answer => answer.detected)
@@ -25,7 +61,13 @@ export const Results = () => {
   )
   const { register, handleSubmit, watch, errors } = useForm()
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = async data => {
+    await resultMutation({
+      variables: {
+        input: createInput(data),
+      },
+    })
+  }
 
   return (
     <>

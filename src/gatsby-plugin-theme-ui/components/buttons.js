@@ -1,7 +1,6 @@
 export const sharedButtonStyles = {
   boxSizing: "border-box !important",
-  border: "1px solid",
-  borderColor: "primary",
+  border: "2px solid",
   color: "text",
   cursor: "pointer",
   fontFamily: "heading",
@@ -10,19 +9,22 @@ export const sharedButtonStyles = {
   variant: "transitions.m",
 
   lineHeight: "tight",
-  py: 12,
-  px: 25,
+  py: 10,
+  px: 50,
   borderRadius: 10,
   fontWeight: 500,
   display: "inline-block",
-
   "&:hover": {
-    borderColor: "secondary",
+    color: "#fff !important",
   },
-  a: {
-    color: "white",
-    textDecoration: "none",
-  },
+
+  // a: {
+  //   color: "white",
+  //   textDecoration: "none",
+  //   "&:hover": {
+  //     color: "#fff",
+  //   },
+  // },
   "&[disabled]": {
     opacity: 0.6,
     cursor: "not-allowed",
@@ -31,10 +33,24 @@ export const sharedButtonStyles = {
 
 const primary = {
   ...sharedButtonStyles,
+  borderColor: "primary",
+  "&:hover": {
+    bg: "primary",
+  },
+}
+const secondary = {
+  ...sharedButtonStyles,
+  borderColor: "secondary",
+  "&:hover": {
+    bg: "secondary",
+  },
 }
 
 export const buttons = {
   primary: {
     ...primary,
+  },
+  secondary: {
+    ...secondary,
   },
 }

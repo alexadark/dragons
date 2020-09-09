@@ -5,8 +5,8 @@ export const fragments = graphql`
     sourceUrl
     localFile {
       childImageSharp {
-        fixed(width: 418, height: 398) {
-          ...GatsbyImageSharpFixed_tracedSVG
+        fluid(maxWidth: 418) {
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
@@ -17,7 +17,7 @@ export const fragments = graphql`
     localFile {
       childImageSharp {
         fluid(maxWidth: 800, maxHeight: 600) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -28,7 +28,7 @@ export const fragments = graphql`
     localFile {
       childImageSharp {
         fluid(maxWidth: 250, maxHeight: 250) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid
         }
       }
     }

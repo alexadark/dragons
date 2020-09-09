@@ -1,13 +1,19 @@
 /** @jsx jsx */
-import { jsx, Flex, Container, Button } from "theme-ui"
+import { jsx, Flex, Container } from "theme-ui"
 import { Link } from "gatsby"
-import { ImageFixed } from "../index"
+import { ImageFluid } from "../index"
 
 export const HomeHero = ({ img }) => {
   return (
     <div sx={{ bg: "grey", py: 55 }}>
       <Container sx={{ maxWidth: "l" }}>
-        <Flex sx={{ justifyContent: "space-between" }}>
+        <Flex
+          sx={{
+            justifyContent: ["center", "center", "space-between"],
+            alignItems: "center",
+            flexWrap: "wrap",
+          }}
+        >
           <div
             className="text"
             sx={{
@@ -15,19 +21,29 @@ export const HomeHero = ({ img }) => {
               color: "#fff",
               fontFamily: "heading",
               textAlign: "center",
+              lineHeight: 1.5,
+              mb: [50, 50, 0],
             }}
           >
             Are Dragons
-            <div sx={{ color: "orange", fontSize: 80 }}>
-              Breathing <div sx={{ fontSize: 130 }}>Fire</div>
+            <div sx={{ color: "orange", fontSize: 80, lineHeight: 1 }}>
+              Breathing <div sx={{ fontSize: 130, lineHeight: 0.9 }}>Fire</div>
             </div>
             On your<span sx={{ color: "green" }}> Emotional </span>Brain?
-            <Link to="/quizz" variant="buttons.primary">
-              Take the Quizz
-            </Link>
+            <Flex sx={{ justifyContent: "center", mt: 30 }}>
+              <Link
+                to="/quizz"
+                sx={{
+                  variant: "buttons.primary",
+                  color: "#fff",
+                }}
+              >
+                Take the Quizz
+              </Link>
+            </Flex>
           </div>
-          <div className="image">
-            <ImageFixed img={img} />
+          <div className="image" sx={{ width: ["90%", "40%", "50%"] }}>
+            <ImageFluid img={img} sx={{ maxWidth: 418 }} />
           </div>
         </Flex>
       </Container>

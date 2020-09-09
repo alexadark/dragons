@@ -8,7 +8,7 @@ export const fonts = {
 export const fontWeights = {
   body: 400,
   heading: "bold",
-  bold: 500,
+  bold: 600,
   black: 900,
 }
 
@@ -46,9 +46,9 @@ export const a = {
   color: "black",
   fontWeight: "bold",
   textDecoration: "none",
-  "&:hover": {
-    color: "secondary",
-  },
+  // "&:hover": {
+  //   color: "secondary",
+  // },
 }
 
 export const p = {

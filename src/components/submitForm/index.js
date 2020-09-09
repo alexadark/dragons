@@ -64,12 +64,12 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
         input: createResultsInput(mailData),
       },
     }).catch(handleError)
-    const { data } = await sendEmail({
+    await sendEmail({
       variables: {
         input: createEmailInput(mailData),
       },
     })
-    console.log("data", data)
+
     reset()
   }
   return (

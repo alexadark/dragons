@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
 import { navigate } from "gatsby"
+import { window } from "browser-monads"
 import { radioStyles } from "./styles"
 import {
   GlobalDispatchContext,
@@ -51,6 +52,7 @@ export const QuestionSet = ({ dragons }) => {
         type: "SET_CURRENT_QUESTIONS",
         currentQuestions: currentQuestions + 1,
       })
+      window.scrollTo(0, 0)
     } else {
       navigate("/results")
     }

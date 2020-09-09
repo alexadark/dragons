@@ -18,8 +18,22 @@ export const Quizz = ({ dragons }) => {
     <>
       <div sx={{ bg: "grey", py: 25 }}>
         <Container>
-          <Flex sx={{ justifyContent: "space-between", alignItems: "center" }}>
-            <h1 sx={{ color: "#fff", fontSize: 36, letterSpacing: 2, m: 0 }}>
+          <Flex
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <h1
+              sx={{
+                color: "#fff",
+                fontSize: [24, 36],
+                letterSpacing: 2,
+                m: 0,
+                mb: [20, 20, 0],
+              }}
+            >
               Know Your HIDDEN Dragons Questionnaire
             </h1>
             <ProgressBar progress={`${progress}%`} />

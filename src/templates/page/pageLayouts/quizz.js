@@ -43,7 +43,7 @@ export const Quizz = ({ dragons }) => {
       <SmallDragons dragons={dragons} />
       <div>
         <Container>
-          <p sx={{ fontWeight: "bold", py: 40 }}>
+          <p sx={{ fontWeight: "bold", py: [20, 35, 45], m: 0 }}>
             Check yes for any of the following that apply to you or your
             ancestors.
           </p>

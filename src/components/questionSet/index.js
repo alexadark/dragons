@@ -83,12 +83,15 @@ export const QuestionSet = ({ dragons }) => {
               sx={{
                 justifyContent: "space-between",
                 alignItems: "center",
+                flexWrap: ["wrap", "wrap", "nowrap"],
                 pl: 35,
                 pr: 50,
                 py: 15,
               }}
             >
-              <div sx={{ maxWidth: 630 }}>{question} </div>
+              <div sx={{ maxWidth: [350, 400, 630], mb: [15, 15, 0] }}>
+                {question}{" "}
+              </div>
               <Flex sx={{ ...radioStyles }}>
                 <div className="radioContainer">
                   <input
@@ -114,7 +117,7 @@ export const QuestionSet = ({ dragons }) => {
             </Flex>
           )
         })}
-        <Flex sx={{ justifyContent: "flex-end" }}>
+        <Flex sx={{ justifyContent: "flex-end", pr: [0, 0, 60] }}>
           <input
             type="submit"
             value="next"
@@ -134,6 +137,7 @@ export const QuestionSet = ({ dragons }) => {
               variant: "transitions.s",
               bg: "transparent",
               cursor: "pointer",
+
               "&:hover": {
                 bg: "orange",
                 color: "#fff",

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Flex } from "theme-ui"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, gql } from "@apollo/client"
@@ -78,23 +78,47 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
         sx={{
           textTransform: "uppercase",
           color: "orange",
-          fontSize: 36,
+          fontSize: 40,
           textAlign: "center",
+          fontWeight: 400,
         }}
       >
         where should we send your results?
       </h2>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          ref={register}
-        />
-        <input type="email" name="email" placeholder="Email" ref={register} />
-        <input type="submit" value="send my results" />
-      </form>
+      <Flex sx={{ justifyContent: "center", mb: 50 }}>
+        <form onSubmit={handleSubmit(onSubmit)} sx={{ ...styles }}>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            ref={register}
+          />
+          <input type="email" name="email" placeholder="Email" ref={register} />
+          <Flex sx={{ justifyContent: "center" }}>
+            <input type="submit" value="send my results" />
+          </Flex>
+        </form>
+      </Flex>
     </>
   )
+}
+
+const styles = {
+  input: {
+    display: "block",
+  },
+  'input[type="text"], input[type="email"]': {
+    border: "2px solid",
+    borderColor: "borderColor",
+    height: 51,
+    width: 340,
+    mb: 20,
+    px: 20,
+  },
+  'input[type="submit"]': {
+    variant: "buttons.primary",
+    bg: "transparent",
+    width: 233,
+    "&:hover": { color: "#fff", bg: "primary" },
+  },
 }

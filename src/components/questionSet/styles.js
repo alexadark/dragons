@@ -28,6 +28,7 @@ export const radioStyles = {
   },
   input: {
     cursor: "pointer",
+    border: "none",
     "&:checked": {
       "&+label": {
         bg: "green",

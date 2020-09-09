@@ -32,6 +32,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.7.2",
     "remove-trailing-slash": "^0.1.0",
+    "slugify": "^1.4.5",
     "styled-components": "^5.1.1",
     "theme-ui": "^0.3.1",
     "typeface-bebas-neue": "^1.1.3",

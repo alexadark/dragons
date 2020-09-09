@@ -32,15 +32,15 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
   const resultsIds = detectedDragonsData?.map(dragon => dragon.databaseId)
 
   const [resultMutation] = useMutation(RESULT_MUTATION)
-  const [sendEmail, { error, data }] = useMutation(SEND_EMAIL)
+  const [sendEmail] = useMutation(SEND_EMAIL)
 
   const createResultsInput = data => {
     const { email, firstName } = data
     return {
       clientMutationId: uuidv4(),
       emailInput: email,
+      slugInput: Date.now().toString(),
       firstNameInput: firstName,
-      // answersInput: localAnswers
       resultsInput: resultsIds,
     }
   }
@@ -50,9 +50,9 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
     return {
       clientMutationId: uuidv4(),
       to: email,
-      from: "alexadark@gmail.com",
+      from: "Dragon App <alexadark@gmail.com>",
       subject: "your Results to Dragons questionnary",
-      body: `Hello ${firstName} these are you results`,
+      body: `Hello ${firstName} these are you results and this is the url for your results ${Date.now().toString()}`,
     }
   }
 
@@ -64,13 +64,13 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
         input: createResultsInput(mailData),
       },
     }).catch(handleError)
-    const { data, errors } = await sendEmail({
+    const { data } = await sendEmail({
       variables: {
         input: createEmailInput(mailData),
       },
     })
-    reset()
     console.log("data", data)
+    reset()
   }
   return (
     <>

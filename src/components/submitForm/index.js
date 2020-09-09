@@ -50,7 +50,7 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
     return {
       clientMutationId: uuidv4(),
       to: email,
-      from: "Dragon App <alexadark@gmail.com>",
+      from: "Dragon App<alexadark@gmail.com>",
       subject: "your Results to Dragons questionnary",
       body: `Hello ${firstName} these are you results and this is the url for your results ${Date.now().toString()}`,
     }

@@ -119,7 +119,7 @@ export const QuestionSet = ({ dragons }) => {
             </Flex>
           )
         })}
-        <Flex sx={{ justifyContent: "flex-end", pr: [0, 0, 60] }}>
+        <Flex sx={{ justifyContent: ["center", "flex-end"], pr: [0, 0, 60] }}>
           <input
             type="submit"
             value="next"

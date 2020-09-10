@@ -40,7 +40,7 @@ export const SmallDetectedDragons = ({ detectedDragonsData }) => {
                       img={featuredImage.node}
                       sx={{ minWidth: [100, 100, 250] }}
                     />
-                    <div sx={{ fontWeight: "bold" }}>{title}</div>
+                    <div sx={{ fontWeight: 600 }}>{title}</div>
                   </div>
                 </Flex>
               </div>

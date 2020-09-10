@@ -16,7 +16,7 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Open Sans`,
+            family: `Spartan`,
             variants: [`400, 700`],
           },
           {

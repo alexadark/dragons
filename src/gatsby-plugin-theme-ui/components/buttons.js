@@ -12,7 +12,7 @@ export const sharedButtonStyles = {
   py: 10,
   px: 50,
   borderRadius: 10,
-  fontWeight: "bold",
+  fontWeight: 500,
   display: "inline-block",
   "&:hover": {
     color: "#fff !important",

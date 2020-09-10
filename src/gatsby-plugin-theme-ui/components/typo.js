@@ -1,7 +1,7 @@
 import { rem } from "polished"
 
 export const fonts = {
-  body: "Open Sans,sans-serif",
+  body: "Spartan,sans-serif",
   heading: "Bebas Neue,cursive",
 }
 
@@ -9,7 +9,7 @@ export const fontWeights = {
   body: 400,
   heading: "bold",
   bold: 700,
-  // black: 900,
+  black: 900,
 }
 
 export const fontSizes = {

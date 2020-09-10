@@ -3,7 +3,6 @@ import { jsx, Flex } from "theme-ui"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, gql } from "@apollo/client"
-import { v4 as uuidv4 } from "uuid"
 
 const RESULT_MUTATION = gql`
   mutation($input: ResultMutationInput!) {
@@ -31,15 +30,18 @@ export const handleError = err => {
 export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
   const resultsIds = detectedDragonsData?.map(dragon => dragon.databaseId)
 
+  const id = Date.now().toString()
+
   const [resultMutation] = useMutation(RESULT_MUTATION)
   const [sendEmail] = useMutation(SEND_EMAIL)
 
   const createResultsInput = data => {
     const { email, firstName } = data
+
     return {
-      clientMutationId: uuidv4(),
+      clientMutationId: id,
       emailInput: email,
-      slugInput: Date.now().toString(),
+      slugInput: id,
       firstNameInput: firstName,
       resultsInput: resultsIds,
     }
@@ -48,7 +50,7 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
   const createEmailInput = data => {
     const { email, firstName } = data
     return {
-      clientMutationId: uuidv4(),
+      clientMutationId: Date.now().toString(),
       to: email,
       from: "Dragon App<alexadark@gmail.com>",
       subject: "your Results to Dragons questionnary",
@@ -59,7 +61,7 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
   const { register, handleSubmit, watch, errors, reset } = useForm()
 
   const onSubmit = async mailData => {
-    await resultMutation({
+    const { data } = await resultMutation({
       variables: {
         input: createResultsInput(mailData),
       },
@@ -69,6 +71,7 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
         input: createEmailInput(mailData),
       },
     })
+    console.log("dataanswer", data)
 
     reset()
   }

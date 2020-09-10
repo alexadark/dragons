@@ -2,6 +2,8 @@
 import { jsx, Container, Flex } from "theme-ui"
 import React, { useContext } from "react"
 import ls from "local-storage"
+import { Router, Link } from "@reach/router"
+import { FinalResult } from "../../../components"
 import {
   GlobalStateContext,
   GlobalDispatchContext,
@@ -20,7 +22,18 @@ export const Results = () => {
   const detectedDragonsData = allDragons?.filter(dragon =>
     detectedDragonsTitles.includes(dragon.title)
   )
-  console.log("detectedData", detectedDragonsData)
+
+  const ResultSubmit = ({ detectedDragonsData, localAnswers }) => {
+    return (
+      <Container sx={{ mt: 35 }}>
+        <SmallDetectedDragons detectedDragonsData={detectedDragonsData} />
+        <SubmitForm
+          detectedDragonsData={detectedDragonsData}
+          localAnswers={localAnswers}
+        />
+      </Container>
+    )
+  }
 
   return (
     <>
@@ -32,13 +45,17 @@ export const Results = () => {
           </h1>
         </Container>
       </div>
-      <Container sx={{ mt: 35 }}>
-        <SmallDetectedDragons detectedDragonsData={detectedDragonsData} />
-        <SubmitForm
+      <Router>
+        <ResultSubmit
           detectedDragonsData={detectedDragonsData}
           localAnswers={localAnswers}
+          path="results"
         />
-      </Container>
+        <FinalResult
+          // slugId={window.location.href.split("/").slice(-1)}
+          path="results/:id"
+        />
+      </Router>
     </>
   )
 }

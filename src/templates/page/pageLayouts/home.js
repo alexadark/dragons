@@ -19,7 +19,7 @@ export const Home = ({ data }) => {
           <div>TAKE THE QUIZ TO</div>
           <div
             dangerouslySetInnerHTML={{ __html: homeTitle }}
-            sx={{ fontSize: 36, fontWeight: 700, lineHeight: 1.3, my: 25 }}
+            sx={{ fontSize: 36, fontWeight: "bold", lineHeight: 1.3, my: 25 }}
           />
           <div
             dangerouslySetInnerHTML={{ __html: homeSubtitle }}

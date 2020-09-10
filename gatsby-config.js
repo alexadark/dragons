@@ -21,11 +21,11 @@ module.exports = {
           },
           {
             family: `Bebas Neue`,
-            subsets: [`latin`],
+            subsets: [`latin`]
           },
         ],
       },
-    },
+    }
 
     {
       resolve: `gatsby-source-filesystem`,

@@ -2,13 +2,13 @@ import { rem } from "polished"
 
 export const fonts = {
   body: "Spartan,sans-serif",
-  heading: "Bebas Neue,cursive",
+  heading: "Bebas Neue,sans-serif",
 }
 
 export const fontWeights = {
   body: 400,
   heading: "bold",
-  bold: 700,
+  bold: 600,
   black: 900,
 }
 

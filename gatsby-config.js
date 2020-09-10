@@ -12,22 +12,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-theme-ui`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Spartan`,
-            variants: [`400, 700`],
-          },
-          {
-            family: `Bebas Neue`,
-            subsets: [`latin`]
-          },
-        ],
-      },
-    }
-
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

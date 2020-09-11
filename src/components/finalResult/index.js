@@ -43,15 +43,14 @@ export const FinalResult = ({ id }) => {
   })
 
   console.log("error", data)
-  const { resultsDragons } = data.answer.detectedDragons
-  console.log("results", resultsDragons)
+  const dragons = data?.answer?.detectedDragons?.resultsDragons
 
   return (
     <>
       {loading && <p>Loading</p>}
       {error && <p>Error</p>}
-      {data && resultsDragons ? (
-        resultsDragons.map(dragon => (
+      {data && dragons ? (
+        dragons.map(dragon => (
           <FinalDetectedDragon key={dragon.id} dragon={dragon} />
         ))
       ) : (

@@ -8,10 +8,10 @@ exports.createPages = async ({ actions, graphql }) => {
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
   console.log("page-", page.path)
-  if (page.path.match(/^\/prueba/))
+  if (page.path.match(/^\/results/))
     createPage({
       path: "/results",
       matchPath: "/results/*",
-      component: path.resolve(`src/templates/page/pageLayouts/results.js`),
+      component: path.resolve(`src/pages/results.js`),
     })
 }

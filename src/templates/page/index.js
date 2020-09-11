@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 import React, { useEffect, useContext } from "react"
 import { Layout, SEO } from "../../components"
-import { Home, Quizz, Results } from "./pageLayouts"
+import { Home, Quizz } from "./pageLayouts"
 import { GlobalDispatchContext } from "../../context/globalContextProvider"
 
 const Page = ({ data }) => {
@@ -23,7 +23,6 @@ const Page = ({ data }) => {
       <SEO title={title} />
       {slug.includes("home") && <Home data={data} />}
       {slug.includes("quizz") && <Quizz dragons={dragons} />}
-      {slug.includes("results") && <Results />}
     </Layout>
   )
 }

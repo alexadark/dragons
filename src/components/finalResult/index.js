@@ -7,24 +7,27 @@ import slashes from "remove-trailing-slash"
 
 const wpUrl = slashes(config.wordPressUrl)
 
-// const GET_RESULT = gql`
-//   query($id: String!) {
-//     answer(id: $id, idType: SLUG) {
-//       title
-//     }
-//   }
-// `
+const GET_RESULT = gql`
+  query($id: ID!) {
+    answer(id: $id, idType: SLUG) {
+      title
+    }
+  }
+`
 
-export const FinalResult = () => {
-  // const { data, loading, error } = useQuery(GET_RESULT, {
-  //   variables: { id: `${wpUrl}/answers/${slugId}` },
-  // })
-  // if (loading) {
-  //   return <p>Loading</p>
-  // }
-  // if (error) {
-  //   return <p>Error</p>
-  // }
-  // return <div>{data && <p>{data.answer.title}</p>}</div>
-  return <h1>final result</h1>
+export const FinalResult = ({ id }) => {
+  const { data, loading, error } = useQuery(GET_RESULT, {
+    variables: { id: `${wpUrl}/answers/${id}` },
+  })
+
+  console.log("error", error)
+
+  return (
+    <>
+      <h1>results for {id}</h1>
+      {loading && <p>Loading</p>}
+      {error && <p>Error</p>}
+      {data && <p>{data.answer.title}</p>}
+    </>
+  )
 }

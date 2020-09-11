@@ -3,14 +3,27 @@ import { jsx, Container, Flex } from "theme-ui"
 import React, { useContext } from "react"
 import ls from "local-storage"
 import { Router, Link } from "@reach/router"
-import { FinalResult } from "../../../components"
 import {
   GlobalStateContext,
   GlobalDispatchContext,
-} from "../../../context/globalContextProvider"
-import { SmallDetectedDragons, SubmitForm } from "../../../components"
+} from "../context/globalContextProvider"
+import {
+  SmallDetectedDragons,
+  SubmitForm,
+  FinalResult,
+  Layout,
+  SEO,
+} from "../components"
 
-export const Results = () => {
+const Detail = ({ id }) => {
+  return (
+    <div>
+      <h1>Pagina de detalle, el id es: {id} </h1>
+    </div>
+  )
+}
+
+const Results = () => {
   const allDragons = ls("allDragons")
 
   const localAnswers = ls("localAnswers")
@@ -36,7 +49,8 @@ export const Results = () => {
   }
 
   return (
-    <>
+    <Layout>
+      <SEO tiitle="results" />
       <div sx={{ bg: "grey", py: 25, textAlign: "center", color: "#fff" }}>
         <Container>
           <h1 sx={{ m: 0 }}>
@@ -51,11 +65,9 @@ export const Results = () => {
           localAnswers={localAnswers}
           path="results"
         />
-        <FinalResult
-          // slugId={window.location.href.split("/").slice(-1)}
-          path="results/:id"
-        />
+        <FinalResult path="/results/:id" />
       </Router>
-    </>
+    </Layout>
   )
 }
+export default Results

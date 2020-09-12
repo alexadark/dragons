@@ -48,7 +48,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
           input: createEmailInput(mailData),
         },
       })
-      navigate(`/${resultId}`, { replace: true })
+      navigate(`${resultId}`, { replace: true })
       // console.log("mailData", data)
     }
   }, [resultId])

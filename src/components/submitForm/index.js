@@ -40,6 +40,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
 
   const [resultMutation] = useMutation(RESULT_MUTATION)
   const [sendEmail] = useMutation(SEND_EMAIL)
+
   useEffect(() => {
     if (!resultErrors && resultId) {
       sendEmail({
@@ -47,7 +48,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
           input: createEmailInput(mailData),
         },
       })
-      navigate(`${resultId}`)
+      navigate(`/${resultId}`, { replace: true })
       // console.log("mailData", data)
     }
   }, [resultId])

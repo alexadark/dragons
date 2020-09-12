@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
 import { navigate } from "gatsby"
@@ -14,6 +14,7 @@ import {
 export const QuestionSet = ({ dragons }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
+  const [quizzErrors, setQuizzErrors] = useState(false)
 
   const { currentQuestions, answers } = state
 
@@ -76,49 +77,69 @@ export const QuestionSet = ({ dragons }) => {
           },
         }}
       >
-        {dragonQuestions?.map((item, i) => {
-          const question = item.questions
-          return (
-            <Flex
-              className="question"
-              key={i}
-              sx={{
-                justifyContent: "space-between",
-                alignItems: "center",
-                flexWrap: ["wrap", "wrap", "nowrap"],
-                pl: 35,
-                pr: 50,
-                py: 15,
-              }}
-            >
-              <div sx={{ maxWidth: [350, 400, 630], mb: [15, 15, 0] }}>
-                {question}{" "}
-              </div>
-              <Flex sx={{ ...radioStyles }}>
-                <div className="radioContainer">
-                  <input
-                    type="radio"
-                    id="yes"
-                    name={`question-${currentQuestions}-${i}`}
-                    value={true}
-                    ref={register}
-                  />
-                  <label htmlFor="yes">YES</label>
+        {dragonQuestions &&
+          dragonQuestions.map((item, i) => {
+            const question = item.questions
+            const name = `question-${currentQuestions}-${i}`
+            console.log("errors", errors[name])
+            return (
+              <Flex
+                className="question"
+                key={i}
+                sx={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexWrap: ["wrap", "wrap", "nowrap"],
+                  pl: 35,
+                  pr: 50,
+                  py: 15,
+                }}
+              >
+                <div sx={{ maxWidth: [350, 400, 630], mb: [15, 15, 0] }}>
+                  {question}
                 </div>
-                <div className="radioContainer">
-                  <input
-                    type="radio"
-                    id="no"
-                    name={`question-${currentQuestions}-${i}`}
-                    value={false}
-                    ref={register}
-                  />
-                  <label htmlFor="no">NO</label>
-                </div>
+
+                <Flex sx={{ ...radioStyles, position: "relative" }}>
+                  <div className="radioContainer">
+                    <input
+                      type="radio"
+                      id="yes"
+                      name={name}
+                      value={true}
+                      ref={register({ required: true })}
+                    />
+
+                    <label htmlFor="yes">YES</label>
+                  </div>
+                  <div className="radioContainer">
+                    <input
+                      type="radio"
+                      id="no"
+                      name={name}
+                      value={false}
+                      ref={register({ required: true })}
+                    />
+                    <label htmlFor="no">NO</label>
+                  </div>
+                </Flex>
+                {errors[name] && (
+                  <div
+                    className="error"
+                    sx={{
+                      position: "absolute",
+                      right: 0,
+                      color: "orange",
+                      left: 72,
+                      marginTop: 50,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Answer Required
+                  </div>
+                )}
               </Flex>
-            </Flex>
-          )
-        })}
+            )
+          })}
         <Flex sx={{ justifyContent: ["center", "flex-end"], pr: [0, 0, 60] }}>
           <input
             type="submit"

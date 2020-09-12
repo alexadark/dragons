@@ -106,7 +106,7 @@ export const QuestionSet = ({ dragons }) => {
                       id="yes"
                       name={name}
                       value={true}
-                      ref={register({ required: true })}
+                      ref={register({ required: false })}
                     />
 
                     <label htmlFor="yes">YES</label>
@@ -117,7 +117,7 @@ export const QuestionSet = ({ dragons }) => {
                       id="no"
                       name={name}
                       value={false}
-                      ref={register({ required: true })}
+                      ref={register({ required: false })}
                     />
                     <label htmlFor="no">NO</label>
                   </div>

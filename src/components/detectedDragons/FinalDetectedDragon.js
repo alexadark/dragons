@@ -31,7 +31,7 @@ export const FinalDetectedDragon = ({ dragon }) => {
         <div
           sx={{
             bg: "lightGrey",
-            width: ["100%", "100%", "70%"],
+            width: "100%",
             py: 35,
           }}
         >
@@ -64,17 +64,20 @@ export const FinalDetectedDragon = ({ dragon }) => {
             </div>
           </Container>
         </div>
-        <div
+        <Flex
           sx={{
+            justifyContent: "flex-start",
             bg: "grey",
             color: "#fff",
             p: 35,
-            maxWidth: ["100%", "100%", 450],
+            width: ["100%", "100%", "50%"],
           }}
         >
-          <h2 sx={{ color: "orange" }}>How to Tame the {title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: dragonsTaming }} />
-        </div>
+          <div sx={{ maxWidth: 450 }}>
+            <h2 sx={{ color: "orange" }}>How to Tame the {title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: dragonsTaming }} />
+          </div>
+        </Flex>
       </Flex>
     </div>
   )

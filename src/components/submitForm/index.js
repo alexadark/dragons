@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, gql } from "@apollo/client"
+import { navigate } from "gatsby"
 
 const RESULT_MUTATION = gql`
   mutation($input: ResultMutationInput!) {
@@ -27,13 +28,27 @@ export const handleError = err => {
   console.log(err)
 }
 
-export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
+export const SubmitForm = ({ detectedDragonsData }) => {
   const resultsIds = detectedDragonsData?.map(dragon => dragon.databaseId)
+  const [resultId, setResultId] = useState(null)
+  const [resultErrors, setResultErrors] = useState(null)
+  const [mailData, setMailData] = useState(null)
 
   const id = Date.now().toString()
 
   const [resultMutation] = useMutation(RESULT_MUTATION)
   const [sendEmail] = useMutation(SEND_EMAIL)
+  useEffect(() => {
+    if (!resultErrors && resultId) {
+      const { data } = sendEmail({
+        variables: {
+          input: createEmailInput(mailData),
+        },
+      })
+      navigate(`${resultId}`)
+      console.log("mailData", data)
+    }
+  }, [resultId])
 
   const createResultsInput = data => {
     const { email, firstName } = data
@@ -54,24 +69,20 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
       to: email,
       from: "Dragon App<alexadark@gmail.com>",
       subject: "your Results to Dragons questionnary",
-      body: `Hello ${firstName} these are you results and this is the url for your results ${Date.now().toString()}`,
+      body: `Hello ${firstName} these are you results and this is the url for your results "results/${resultId}"`,
     }
   }
 
   const { register, handleSubmit, watch, errors, reset } = useForm()
 
   const onSubmit = async mailData => {
-    const { data } = await resultMutation({
+    setMailData(mailData)
+    const { data: resultData, errors: resultErrors } = await resultMutation({
       variables: {
         input: createResultsInput(mailData),
       },
     }).catch(handleError)
-    await sendEmail({
-      variables: {
-        input: createEmailInput(mailData),
-      },
-    })
-    console.log("dataanswer", data)
+    setResultId(resultData.resultMutation.clientMutationId)
 
     reset()
   }
@@ -101,6 +112,7 @@ export const SubmitForm = ({ detectedDragonsData, localAnswers }) => {
             <input type="submit" value="send my results" />
           </Flex>
         </form>
+        {resultErrors && <h3>{resultErrors}</h3>}
       </Flex>
     </>
   )

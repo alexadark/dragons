@@ -65,7 +65,7 @@ const Results = () => {
           localAnswers={localAnswers}
           path="results"
         />
-        <FinalResult path="/results/:id" />
+        <FinalResult path="results/:id" />
       </Router>
     </Layout>
   )

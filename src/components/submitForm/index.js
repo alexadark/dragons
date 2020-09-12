@@ -23,10 +23,6 @@ const SEND_EMAIL = gql`
     }
   }
 `
-export const handleError = err => {
-  console.log(`oh noooo something went wrong!!!! 💩`)
-  console.log(err)
-}
 
 export const SubmitForm = ({ detectedDragonsData }) => {
   const resultsIds = detectedDragonsData?.map(dragon => dragon.databaseId)
@@ -34,24 +30,30 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   const [resultErrors, setResultErrors] = useState(null)
   const [mailData, setMailData] = useState(null)
 
+  const handleError = err => {
+    console.log(`oh noooo something went wrong!!!! 💩`)
+    console.log(err)
+    setResultErrors(err)
+  }
+
   const id = Date.now().toString()
 
   const [resultMutation] = useMutation(RESULT_MUTATION)
   const [sendEmail] = useMutation(SEND_EMAIL)
   useEffect(() => {
     if (!resultErrors && resultId) {
-      const { data } = sendEmail({
+      sendEmail({
         variables: {
           input: createEmailInput(mailData),
         },
       })
       navigate(`${resultId}`)
-      console.log("mailData", data)
+      // console.log("mailData", data)
     }
   }, [resultId])
 
-  const createResultsInput = data => {
-    const { email, firstName } = data
+  const createResultsInput = mailData => {
+    const { email, firstName } = mailData
 
     return {
       clientMutationId: id,
@@ -62,8 +64,8 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     }
   }
 
-  const createEmailInput = data => {
-    const { email, firstName } = data
+  const createEmailInput = mailData => {
+    const { email, firstName } = mailData
     return {
       clientMutationId: Date.now().toString(),
       to: email,
@@ -77,11 +79,14 @@ export const SubmitForm = ({ detectedDragonsData }) => {
 
   const onSubmit = async mailData => {
     setMailData(mailData)
-    const { data: resultData, errors: resultErrors } = await resultMutation({
+    const { data: resultData, errors } = await resultMutation({
       variables: {
         input: createResultsInput(mailData),
       },
-    }).catch(handleError)
+    }).catch(console.log("resultErrors", errors), handleError)
+    // console.log("resultErrors", resultErrors)
+    console.log("resultData", resultData)
+
     setResultId(resultData.resultMutation.clientMutationId)
 
     reset()
@@ -112,7 +117,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
             <input type="submit" value="send my results" />
           </Flex>
         </form>
-        {resultErrors && <h3>{resultErrors}</h3>}
+        {resultErrors && <h3>YOu have already submitted this email</h3>}
       </Flex>
     </>
   )

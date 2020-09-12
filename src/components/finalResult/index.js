@@ -5,6 +5,7 @@ import { useQuery, gql } from "@apollo/client"
 import config from "../../../config.js"
 import { FinalDetectedDragon } from "../index"
 import slashes from "remove-trailing-slash"
+import { Loading } from "../index"
 
 const wpUrl = slashes(config.wordPressUrl)
 
@@ -47,14 +48,25 @@ export const FinalResult = ({ id }) => {
 
   return (
     <>
-      {loading && <p>Loading</p>}
-      {error && <p>Error</p>}
-      {data && dragons ? (
+      {error ? (
+        <p>Error</p>
+      ) : loading ? (
+        <Flex
+          sx={{
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "100vh",
+          }}
+        >
+          <Loading />
+        </Flex>
+      ) : data && dragons ? (
         dragons.map(dragon => (
           <FinalDetectedDragon key={dragon.id} dragon={dragon} />
         ))
       ) : (
-        <p>You have no dragons</p>
+        <p>You have no dragons detected</p>
       )}
     </>
   )

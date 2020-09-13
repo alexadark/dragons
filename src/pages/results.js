@@ -15,14 +15,6 @@ import {
   SEO,
 } from "../components"
 
-const Detail = ({ id }) => {
-  return (
-    <div>
-      <h1>Pagina de detalle, el id es: {id} </h1>
-    </div>
-  )
-}
-
 const Results = () => {
   const allDragons = ls("allDragons")
 

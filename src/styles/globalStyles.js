@@ -26,6 +26,7 @@ export const globalStyles = theme => {
       overflow-x: hidden;
       /* scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch; */
+      font-display: block;
     }
     body[style*="overflow"] {
       height: 100vh;

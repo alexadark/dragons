@@ -21,7 +21,8 @@ export const QuestionSet = ({ dragons }) => {
     dragonFields: { dragonQuestions },
   } = dragons[currentQuestions]
 
-  const limit = dragonQuestions.length / 2
+  // const limit = dragonQuestions.length / 2
+  const limit = 2
 
   const { register, handleSubmit, errors, reset } = useForm()
 
@@ -105,7 +106,7 @@ export const QuestionSet = ({ dragons }) => {
                       id="yes"
                       name={name}
                       value={true}
-                      ref={register({ required: false })}
+                      ref={register({ required: true })}
                     />
 
                     <label htmlFor="yes">YES</label>
@@ -116,7 +117,7 @@ export const QuestionSet = ({ dragons }) => {
                       id="no"
                       name={name}
                       value={false}
-                      ref={register({ required: false })}
+                      ref={register({ required: true })}
                     />
                     <label htmlFor="no">NO</label>
                   </div>

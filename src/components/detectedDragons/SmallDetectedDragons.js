@@ -29,18 +29,17 @@ export const SmallDetectedDragons = ({ detectedDragonsData }) => {
                   <Flex
                     sx={{
                       bg: "lightGrey",
-                      height: 300,
+                      height: ["100%", 400],
                       justifyContent: "center",
                       alignItems: "center",
-                      p: 40,
+                      // p: 40,
                     }}
                   >
                     <div>
-                      <ImageFluid
-                        img={featuredImage.node}
-                        sx={{ minWidth: [100, 100, 250] }}
-                      />
-                      <div sx={{ fontWeight: 600 }}>{title}</div>
+                      <ImageFluid img={featuredImage.node} sx={{ m: 20 }} />
+                      <div sx={{ fontWeight: 600, mt: 30, pb: 20 }}>
+                        {title}
+                      </div>
                     </div>
                   </Flex>
                 </div>

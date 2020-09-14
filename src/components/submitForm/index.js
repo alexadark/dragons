@@ -80,18 +80,23 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   const { register, handleSubmit, errors, reset } = useForm()
 
   const onSubmit = async mailData => {
-    setMailData(mailData)
-    const { data: resultData, errors } = await resultMutation({
-      variables: {
-        input: createResultsInput(mailData),
-      },
-    }).catch(console.log("resultErrors", errors), handleError)
-    // console.log("resultErrors", resultErrors)
-    console.log("resultData", resultData)
+    try {
+      setMailData(mailData)
+      const { data: resultData, errors } = await resultMutation({
+        variables: {
+          input: createResultsInput(mailData),
+        },
+      })
+      console.log("resultData", resultData)
+      console.log("errors", errors)
 
-    setResultId(resultData.resultMutation.clientMutationId)
+      setResultId(resultData.resultMutation.clientMutationId)
 
-    reset()
+      reset()
+    } catch (error) {
+      console.log(">>> resultErrors", error)
+      handleError(error)
+    }
   }
   return (
     <>
@@ -106,7 +111,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       >
         where should we send your results?
       </h2>
-      <Flex sx={{ justifyContent: "center", mb: 50 }}>
+      <Flex sx={{ alignItems: "center", mb: 50, flexDirection: "column" }}>
         <form onSubmit={handleSubmit(onSubmit)} sx={{ ...styles }}>
           <input
             type="text"
@@ -119,7 +124,23 @@ export const SubmitForm = ({ detectedDragonsData }) => {
             <input type="submit" value="send my results" />
           </Flex>
         </form>
-        {resultErrors && <h3>YOu have already submitted this email</h3>}
+        {resultErrors && (
+          <div
+            sx={{
+              textAlign: "center",
+              m: 0,
+              px: 30,
+              py: 15,
+              bg: "orange",
+              borderRadius: 10,
+              color: "#fff",
+              mt: 20,
+              fontWeight: "bold",
+            }}
+          >
+            You cannot submit several times with the same email
+          </div>
+        )}
       </Flex>
     </>
   )

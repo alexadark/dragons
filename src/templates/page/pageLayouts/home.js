@@ -6,10 +6,7 @@ import { HomeHero } from "../../../components"
 
 export const Home = ({ data }) => {
   const {
-    title,
-    slug,
     homeFields: { homeSteps, heroImage, homeTitle, homeSubtitle },
-    allDragons: { dragons },
   } = data.wpPage
   return (
     <>

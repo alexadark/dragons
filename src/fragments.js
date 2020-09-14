@@ -16,7 +16,7 @@ export const fragments = graphql`
     sourceUrl
     localFile {
       childImageSharp {
-        fluid(maxWidth: 800, maxHeight: 600) {
+        fluid(maxWidth: 300, maxHeight: 600) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -27,7 +27,7 @@ export const fragments = graphql`
     sourceUrl
     localFile {
       childImageSharp {
-        fluid(maxWidth: 250, maxHeight: 250) {
+        fluid(maxWidth: 400) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -52,21 +52,21 @@ export const fragments = graphql`
     }
   }
 
-  fragment dragonResultLarge on WpDragon {
-    title
-    featuredImage {
-      node {
-        ...dragonResultsLargeImage
-      }
-    }
-    dragonFields {
-      dragonorigins
-      dragonTriggers
-      dragonMovies
-      dragonMoviesTitle
-      dragonsTaming
-    }
-  }
+  # fragment dragonResultLarge on WpDragon {
+  #   title
+  #   featuredImage {
+  #     node {
+  #       ...dragonResultsLargeImage
+  #     }
+  #   }
+  #   dragonFields {
+  #     dragonorigins
+  #     dragonTriggers
+  #     dragonMovies
+  #     dragonMoviesTitle
+  #     dragonsTaming
+  #   }
+  # }
 
   fragment allDragons on WpPage {
     allDragons {
@@ -76,7 +76,7 @@ export const fragments = graphql`
           databaseId
           featuredImage {
             node {
-              ...dragonResultLargeImage
+              ...dragonResultSmallImage
             }
           }
           dragonFields {

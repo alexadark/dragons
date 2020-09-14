@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Flex } from "theme-ui"
-import React from "react"
 
 export const FinalDetectedDragon = ({ dragon }) => {
-  console.log("dragon", dragon)
   const {
     title,
     featuredImage: {
@@ -24,7 +22,11 @@ export const FinalDetectedDragon = ({ dragon }) => {
       <Container sx={{ maxWidth: "l" }}>
         <h1 sx={{ textAlign: "center", fontSize: [40, 72] }}>{title}</h1>
         <Flex sx={{ justifyContent: "center" }}>
-          <img src={sourceUrl} alt={`image for ${title}`} />
+          <img
+            src={sourceUrl}
+            alt={`${title}`}
+            sx={{ maxWidth: 450, mt: 30, mb: 60 }}
+          />
         </Flex>
       </Container>
       <Flex sx={{ flexWrap: ["wrap", "wrap", "nowrap"] }}>

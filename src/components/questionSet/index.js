@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
 import { navigate } from "gatsby"
@@ -14,7 +14,6 @@ import {
 export const QuestionSet = ({ dragons }) => {
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
-  const [quizzErrors, setQuizzErrors] = useState(false)
 
   const { currentQuestions, answers } = state
 
@@ -24,7 +23,7 @@ export const QuestionSet = ({ dragons }) => {
 
   const limit = dragonQuestions.length / 2
 
-  const { register, handleSubmit, watch, errors, reset } = useForm()
+  const { register, handleSubmit, errors, reset } = useForm()
 
   const isDragonDetected = answers =>
     Object.values(answers).filter(item => item === "true").length >= limit
@@ -81,7 +80,7 @@ export const QuestionSet = ({ dragons }) => {
           dragonQuestions.map((item, i) => {
             const question = item.questions
             const name = `question-${currentQuestions}-${i}`
-            console.log("errors", errors[name])
+
             return (
               <Flex
                 className="question"

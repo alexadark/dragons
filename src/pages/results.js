@@ -1,12 +1,7 @@
 /** @jsx jsx */
-import { jsx, Container, Flex } from "theme-ui"
-import React, { useContext } from "react"
+import { jsx, Container } from "theme-ui"
 import ls from "local-storage"
-import { Router, Link } from "@reach/router"
-import {
-  GlobalStateContext,
-  GlobalDispatchContext,
-} from "../context/globalContextProvider"
+import { Router } from "@reach/router"
 import {
   SmallDetectedDragons,
   SubmitForm,
@@ -20,13 +15,13 @@ const Results = () => {
 
   const localAnswers = ls("localAnswers")
 
-  const detectedDragonsTitles = localAnswers
-    ?.filter(answer => answer.detected)
-    .map(dragon => dragon.title)
+  const detectedDragonsTitles =
+    localAnswers &&
+    localAnswers.filter(answer => answer.detected).map(dragon => dragon.title)
 
-  const detectedDragonsData = allDragons?.filter(dragon =>
-    detectedDragonsTitles.includes(dragon.title)
-  )
+  const detectedDragonsData =
+    allDragons &&
+    allDragons.filter(dragon => detectedDragonsTitles.includes(dragon.title))
 
   const ResultSubmit = ({ detectedDragonsData, localAnswers }) => {
     return (
@@ -42,7 +37,7 @@ const Results = () => {
 
   return (
     <Layout>
-      <SEO tiitle="results" />
+      <SEO title="results" />
       <div sx={{ bg: "grey", py: 25, textAlign: "center", color: "#fff" }}>
         <Container>
           <h1 sx={{ m: 0 }}>

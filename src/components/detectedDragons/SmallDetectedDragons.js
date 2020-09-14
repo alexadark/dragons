@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Flex } from "theme-ui"
-import React from "react"
+import { jsx, Flex } from "theme-ui"
 import { ImageFluid } from "../../components"
 
 export const SmallDetectedDragons = ({ detectedDragonsData }) => {
@@ -17,35 +16,36 @@ export const SmallDetectedDragons = ({ detectedDragonsData }) => {
             justifyContent: "center",
           }}
         >
-          {detectedDragonsData?.map(dragon => {
-            const { title, featuredImage } = dragon
-            return (
-              <div
-                sx={{
-                  width: ["100%", "50%", "33.33%", "25%"],
-                  p: 15,
-                }}
-              >
-                <Flex
+          {detectedDragonsData &&
+            detectedDragonsData.map(dragon => {
+              const { title, featuredImage } = dragon
+              return (
+                <div
                   sx={{
-                    bg: "lightGrey",
-                    height: 300,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    p: 40,
+                    width: ["100%", "50%", "33.33%", "25%"],
+                    p: 15,
                   }}
                 >
-                  <div>
-                    <ImageFluid
-                      img={featuredImage.node}
-                      sx={{ minWidth: [100, 100, 250] }}
-                    />
-                    <div sx={{ fontWeight: 600 }}>{title}</div>
-                  </div>
-                </Flex>
-              </div>
-            )
-          })}
+                  <Flex
+                    sx={{
+                      bg: "lightGrey",
+                      height: 300,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      p: 40,
+                    }}
+                  >
+                    <div>
+                      <ImageFluid
+                        img={featuredImage.node}
+                        sx={{ minWidth: [100, 100, 250] }}
+                      />
+                      <div sx={{ fontWeight: 600 }}>{title}</div>
+                    </div>
+                  </Flex>
+                </div>
+              )
+            })}
         </Flex>
       </div>
     </div>

@@ -1,5 +1,4 @@
-import React, { useReducer, createContext, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useReducer, createContext } from "react"
 
 export const GlobalStateContext = createContext()
 export const GlobalDispatchContext = createContext()

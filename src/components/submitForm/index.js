@@ -25,7 +25,8 @@ const SEND_EMAIL = gql`
 `
 
 export const SubmitForm = ({ detectedDragonsData }) => {
-  const resultsIds = detectedDragonsData?.map(dragon => dragon.databaseId)
+  const resultsIds =
+    detectedDragonsData && detectedDragonsData.map(dragon => dragon.databaseId)
   const [resultId, setResultId] = useState(null)
   const [resultErrors, setResultErrors] = useState(null)
   const [mailData, setMailData] = useState(null)
@@ -76,7 +77,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     }
   }
 
-  const { register, handleSubmit, watch, errors, reset } = useForm()
+  const { register, handleSubmit, errors, reset } = useForm()
 
   const onSubmit = async mailData => {
     setMailData(mailData)

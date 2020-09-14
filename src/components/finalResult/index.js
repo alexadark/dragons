@@ -43,7 +43,6 @@ export const FinalResult = ({ id }) => {
     variables: { id: `${wpUrl}/answers/${id}` },
   })
 
-  console.log("error", data)
   const dragons = data?.answer?.detectedDragons?.resultsDragons
 
   return (

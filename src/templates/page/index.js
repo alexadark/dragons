@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React, { useEffect, useContext } from "react"
+import { useEffect, useContext } from "react"
+import { graphql } from "gatsby"
 import { Layout, SEO } from "../../components"
 import { Home, Quizz } from "./pageLayouts"
 import { GlobalDispatchContext } from "../../context/globalContextProvider"
@@ -9,14 +10,13 @@ const Page = ({ data }) => {
   const {
     title,
     slug,
-    homeFields: { homeSteps, heroImage, homeTitle, homeSubtitle },
     allDragons: { dragons },
   } = data.wpPage
 
-  const dispatch = useContext(GlobalDispatchContext)
-  useEffect(() => {
-    dispatch({})
-  }, [])
+  // const dispatch = useContext(GlobalDispatchContext)
+  // useEffect(() => {
+  //   dispatch({})
+  // }, [])
 
   return (
     <Layout>

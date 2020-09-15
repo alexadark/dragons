@@ -171,7 +171,7 @@ export const QuestionSet = ({ dragons }) => {
       </form>
 
       {Object.values(errors)?.length > 0 && (
-        <Flex sx={{ justifyContent: "center" }}>
+        <Flex sx={{ justifyContent: "center", mb: 40 }}>
           <div sx={{ variant: "text.error" }}>
             You must answer all questions
           </div>

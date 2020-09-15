@@ -122,7 +122,7 @@ export const QuestionSet = ({ dragons }) => {
                     <label htmlFor="no">NO</label>
                   </div>
                 </Flex>
-                {errors[name] && (
+                {/* {errors[name] && (
                   <div
                     className="error"
                     sx={{
@@ -136,7 +136,7 @@ export const QuestionSet = ({ dragons }) => {
                   >
                     Answer Required
                   </div>
-                )}
+                )} */}
               </Flex>
             )
           })}
@@ -169,6 +169,14 @@ export const QuestionSet = ({ dragons }) => {
           />
         </Flex>
       </form>
+
+      {Object.values(errors)?.length > 0 && (
+        <Flex sx={{ justifyContent: "center" }}>
+          <div sx={{ variant: "text.error" }}>
+            You must answer all questions
+          </div>
+        </Flex>
+      )}
     </div>
   )
 }

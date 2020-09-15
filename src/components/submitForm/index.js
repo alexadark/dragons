@@ -127,15 +127,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
         {resultErrors && (
           <div
             sx={{
-              textAlign: "center",
-              m: 0,
-              px: 30,
-              py: 15,
-              bg: "orange",
-              borderRadius: 10,
-              color: "#fff",
-              mt: 20,
-              fontWeight: "bold",
+              variant: "text.error",
             }}
           >
             You cannot submit several times with the same email

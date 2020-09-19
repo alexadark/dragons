@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex } from "theme-ui"
+import { jsx, Flex, Container } from "theme-ui"
 import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, gql } from "@apollo/client"
@@ -55,13 +55,14 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   }, [resultId])
 
   const createResultsInput = mailData => {
-    const { email, firstName } = mailData
+    const { email, firstName, age } = mailData
 
     return {
       clientMutationId: id,
       emailInput: email,
       slugInput: id,
       firstNameInput: firstName,
+      ageInput: age,
       resultsInput: resultsIds,
     }
   }
@@ -100,6 +101,18 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   }
   return (
     <>
+      <Container sx={{ maxWidth: "l", mb: 40 }}>
+        <Flex
+          sx={{
+            textAlign: "center",
+            justifyContent: "center",
+            fontWeight: "bold",
+          }}
+        >
+          NOW IT’S TIME TO LEARN HOW TO TAME YOUR DRAGONS SO YOU CAN FEEL
+          HAPPIER, CALMER, AND MORE IN CONTROL OF YOUR EMOTIONS.
+        </Flex>
+      </Container>
       <h2
         sx={{
           textTransform: "uppercase",
@@ -117,9 +130,23 @@ export const SubmitForm = ({ detectedDragonsData }) => {
             type="text"
             name="firstName"
             placeholder="First Name"
-            ref={register}
+            ref={register({ required: true })}
           />
-          <input type="email" name="email" placeholder="Email" ref={register} />
+          {errors.firstName && "First Name is required"}
+          <input
+            type="text"
+            name="age"
+            placeholder="Age"
+            ref={register({ required: true })}
+          />
+          {errors.age && "Age is Required"}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            ref={register({ required: true })}
+          />
+          {errors.email && "Email is Required"}
           <Flex sx={{ justifyContent: "center" }}>
             <input type="submit" value="send my results" />
           </Flex>

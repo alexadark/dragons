@@ -82,6 +82,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
 
   const onSubmit = async mailData => {
     try {
+      setResultErrors(null)
       setMailData(mailData)
       const { data: resultData, errors } = await resultMutation({
         variables: {

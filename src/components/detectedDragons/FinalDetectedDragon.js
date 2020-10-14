@@ -61,7 +61,7 @@ export const FinalDetectedDragon = ({ dragon }) => {
               <div dangerouslySetInnerHTML={{ __html: dragonReactions }} />
             </div>
             <div>
-              <h3>Movies({dragonMoviesTitle})</h3>
+              <h3>Movies ({dragonMoviesTitle})</h3>
               <div dangerouslySetInnerHTML={{ __html: dragonMovies }} />
             </div>
           </Container>

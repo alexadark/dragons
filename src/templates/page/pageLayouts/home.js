@@ -13,7 +13,9 @@ export const Home = ({ data }) => {
       <HomeHero img={heroImage} />
       <Container sx={{ textAlign: "center", py: 50, maxWidth: 970 }}>
         <div className="intro">
-          <div>TAKE THE QUIZ TO</div>
+          <div sx={{ textTransform: "uppercase" }}>
+            Know your hidden dragons
+          </div>
           <div
             dangerouslySetInnerHTML={{ __html: homeTitle }}
             sx={{ fontSize: 36, fontWeight: 700, lineHeight: 1.3, my: 25 }}

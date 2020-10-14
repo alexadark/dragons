@@ -25,7 +25,7 @@ export const HomeHero = ({ img }) => {
               mb: [50, 50, 0],
             }}
           >
-            Are Dragons
+            Are Hidden Dragons
             <div sx={{ color: "orange", fontSize: 80, lineHeight: 1 }}>
               Breathing <div sx={{ fontSize: 130, lineHeight: 0.9 }}>Fire</div>
             </div>

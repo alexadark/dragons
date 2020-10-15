@@ -30,6 +30,8 @@ export const QuestionSet = ({ dragons }) => {
     Object.values(answers).filter(item => item === "true").length >= limit
 
   const setAnswers = async data => {
+    console.log("data", data)
+
     await dispatch({
       type: "SET_ANSWERS",
       answers: [
@@ -77,69 +79,55 @@ export const QuestionSet = ({ dragons }) => {
           },
         }}
       >
-        {dragonQuestions &&
-          dragonQuestions.map((item, i) => {
-            const question = item.questions
-            const name = `question-${currentQuestions}-${i}`
+        {dragonQuestions?.map((item, i) => {
+          const question = item.questions
+          const name = `question-${currentQuestions}-${i}`
 
-            return (
-              <Flex
-                className="question"
-                key={i}
-                sx={{
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  flexWrap: ["wrap", "wrap", "nowrap"],
-                  pl: 35,
-                  pr: 50,
-                  py: 15,
-                }}
-              >
-                <div sx={{ maxWidth: [350, 400, 630], mb: [15, 15, 0] }}>
-                  {question}
+          return (
+            <Flex
+              className="question"
+              key={i}
+              sx={{
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: ["wrap", "wrap", "nowrap"],
+                pl: 35,
+                pr: 50,
+                py: 15,
+              }}
+            >
+              <div sx={{ maxWidth: [350, 400, 630], mb: [15, 15, 0] }}>
+                {question}
+              </div>
+
+              <Flex sx={{ ...radioStyles, position: "relative" }}>
+                <div className="radioContainer">
+                  <input
+                    type="radio"
+                    id="yes"
+                    name={name}
+                    value={true}
+                    ref={register}
+                    required
+                  />
+
+                  <label htmlFor="yes">YES</label>
                 </div>
-
-                <Flex sx={{ ...radioStyles, position: "relative" }}>
-                  <div className="radioContainer">
-                    <input
-                      type="radio"
-                      id="yes"
-                      name={name}
-                      value={true}
-                      ref={register({ required: true })}
-                    />
-
-                    <label htmlFor="yes">YES</label>
-                  </div>
-                  <div className="radioContainer">
-                    <input
-                      type="radio"
-                      id="no"
-                      name={name}
-                      value={false}
-                      ref={register({ required: true })}
-                    />
-                    <label htmlFor="no">NO</label>
-                  </div>
-                </Flex>
-                {/* {errors[name] && (
-                  <div
-                    className="error"
-                    sx={{
-                      position: "absolute",
-                      right: 0,
-                      color: "orange",
-                      left: 72,
-                      marginTop: 50,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Answer Required
-                  </div>
-                )} */}
+                <div className="radioContainer">
+                  <input
+                    type="radio"
+                    id="no"
+                    name={name}
+                    value={false}
+                    ref={register}
+                    required
+                  />
+                  <label htmlFor="no">NO</label>
+                </div>
               </Flex>
-            )
-          })}
+            </Flex>
+          )
+        })}
         <Flex sx={{ justifyContent: ["center", "flex-end"], pr: [0, 0, 60] }}>
           <input
             type="submit"

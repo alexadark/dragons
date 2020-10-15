@@ -49,25 +49,44 @@ export const SmallDragons = ({ dragons }) => {
                 <div className="dragon" key={i} sx={{ position: "relative" }}>
                   <div sx={{ px: 7 }}>
                     <img src={smallDragonImage} alt="" sx={{ m: 0 }} />
-                    <div
+                    <Flex
                       className="detected"
                       sx={{
                         position: "absolute",
                         left: 10,
-                        top: 15,
+                        top: 25,
                         visibility: `${showDetected}`,
+                        alignItems: "center",
+                        flexDirection: "column",
                       }}
                     >
-                      <Checkmark
-                        color="#fff"
-                        sx={{ polyline: { strokeWidth: 5 } }}
-                      />
+                      <Flex
+                        sx={{
+                          justifyContent: "center",
+                          alignItems: "center",
+                          bg: "orange",
+                          borderRadius: 50,
+                          width: 24,
+                          height: 24,
+                        }}
+                      >
+                        <Checkmark
+                          color="#fff"
+                          size="small"
+                          sx={{ polyline: { strokeWidth: 5 } }}
+                        />
+                      </Flex>
                       <div
-                        sx={{ color: "#fff", fontSize: 8, fontWeight: "bold" }}
+                        sx={{
+                          color: "#fff",
+                          fontSize: 8,
+                          fontWeight: "bold",
+                          mt: 5,
+                        }}
                       >
                         DETECTED
                       </div>
-                    </div>
+                    </Flex>
                   </div>
                 </div>
               )

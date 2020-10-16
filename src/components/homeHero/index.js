@@ -38,7 +38,7 @@ export const HomeHero = ({ img }) => {
                   color: "#fff",
                 }}
               >
-                Take the Quizz
+                Take the Quiz
               </Link>
             </Flex>
           </div>

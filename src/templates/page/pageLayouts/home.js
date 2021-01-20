@@ -145,7 +145,7 @@ export const Home = ({ data }) => {
             />
           </Container>
         </section>
-        <section
+        <div
           className="sectionThree"
           sx={{
             textAlign: "center",
@@ -155,10 +155,13 @@ export const Home = ({ data }) => {
             sx={{
               maxWidth: 1280,
               backgroundImage: `url(${paperDragon})`,
-              backgroundPosition: "fixed",
+              backgroundAttachment: "fixed",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              py: [50, 100],
             }}
           >
-            <Container sx={{ maxWidth: 900 }}>
+            <Container sx={{ maxWidth: 900, mb: 100 }}>
               <h2 sx={{ fontSize: 36, color: "green" }}>{sectionThreeTitle}</h2>
               <h3 className="subtitle" sx={{ fontSize: 24 }}>
                 {sectionThreeSubtitle}
@@ -185,36 +188,44 @@ export const Home = ({ data }) => {
                     }}
                   >
                     <div>
-                      <img
-                        src={featuredImage.node.localFile.publicURL}
-                        className={dragonClass}
-                        alt=""
+                      <Flex
                         sx={{
-                          display: "block",
-                          width: "100%",
-                          height: "auto",
-                          maxWidth: 200,
-                          "&.abandoned": { maxWidth: 430 },
-                        }}
-                      />
-                      <div
-                        sx={{
-                          fontWeight: 600,
-                          textAlign: "center",
-                          fontSize: 20,
-                          color: "green",
-                          fontFamily: "heading",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          justifyContent: "center",
                         }}
                       >
-                        {title}
-                      </div>
+                        <img
+                          src={featuredImage.node.localFile.publicURL}
+                          className={dragonClass}
+                          alt=""
+                          sx={{
+                            display: "block",
+                            width: "100%",
+                            height: "auto",
+                            maxWidth: 150,
+                            "&.abandoned": { maxWidth: 400 },
+                          }}
+                        />
+                        <div
+                          sx={{
+                            fontWeight: 600,
+                            textAlign: "center",
+                            fontSize: 20,
+                            color: "green",
+                            fontFamily: "heading",
+                          }}
+                        >
+                          {title}
+                        </div>
+                      </Flex>
                     </div>
                   </div>
                 )
               })}
             </Flex>
           </Container>
-        </section>
+        </div>
         <section className="sectionFour" sx={{ bg: "lightGrey" }}>
           <Container sx={{ maxWidth: 1200 }}>
             <img className="leftImage" src={book} />

@@ -36,6 +36,7 @@ export const pageQuery = graphql`
       slug
       ...homeFields
       ...allDragons
+      ...homeSections
     }
   }
 `

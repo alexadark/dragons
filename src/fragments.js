@@ -118,4 +118,21 @@ export const fragments = graphql`
       }
     }
   }
+
+  fragment homeSections on WpPage {
+    homeSectionOne {
+      sectionOneTitle
+      sectionOneContent
+    }
+    homeSectionTwo {
+      sectionTwoContent
+    }
+    homeSectionThree {
+      sectionThreeTitle
+      sectionThreeSubtitle
+    }
+    homeSectionFour {
+      sectionFourContent
+    }
+  }
 `

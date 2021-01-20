@@ -3,10 +3,12 @@ import { jsx, Container, Flex } from "theme-ui"
 import React from "react"
 import { Link } from "gatsby"
 import { HomeHero, ImageFluid } from "../../../components"
+import bg1 from "./images/bg-1.jpg"
 import bg2 from "./images/bg-2.jpg"
 import paperDragon from "./images/paper-dragon.png"
 import drAmen from "./images/dr-amen.png"
 import book from "./images/book.png"
+import arrow from "./images/arrow.png"
 
 export const Home = ({ data }) => {
   const {
@@ -14,6 +16,13 @@ export const Home = ({ data }) => {
   } = data.wpPage
 
   const {
+    homeHero: {
+      sentenceOne,
+      sentenceTwo,
+      sentenceThree,
+      sentenceFour,
+      sentenceFive,
+    },
     homeSectionOne: { sectionOneTitle, sectionOneContent },
     homeSectionTwo: { sectionTwoContent },
     homeSectionThree: { sectionThreeTitle, sectionThreeSubtitle },
@@ -23,7 +32,79 @@ export const Home = ({ data }) => {
 
   return (
     <>
-      <HomeHero img={heroImage} />
+      <div className="homeHero" sx={{ backgroundImage: `url(${bg1}) ` }}>
+        <Container sx={{ maxWidth: 1280, pt: 30, pb: 60 }}>
+          <div
+            sx={{
+              pl: 130,
+              position: "relative",
+              "&:before": {
+                content: "''",
+                width: 114,
+                height: 137,
+                backgroundImage: `url(${arrow})`,
+                position: "absolute",
+                left: 0,
+                bottom: 0,
+              },
+            }}
+          >
+            <div
+              sx={{ fontSize: 16, fontFamily: "heading", fontWeight: "bold" }}
+            >
+              {sentenceOne}
+            </div>
+            <h1
+              sx={{
+                color: "orange",
+                fontSize: 70,
+                lineHeight: 1,
+                fontFamily: "heading",
+                fontWeight: "bold",
+                maxWidth: 830,
+              }}
+              dangerouslySetInnerHTML={{ __html: sentenceTwo }}
+            />
+
+            <div sx={{ fontSize: 30, color: "#fff", fontWeight: 300 }}>
+              {sentenceThree}
+            </div>
+            <h2
+              sx={{ fontSize: 87, fontFamily: "heading", fontWeight: "bold" }}
+            >
+              {sentenceFour}
+            </h2>
+          </div>
+          <Link
+            to="/quizz"
+            sx={{
+              width: 967,
+              display: "block",
+              textAlign: "center",
+              bg: "#ecdd2e",
+              textTransform: "uppercase",
+              fontSize: 18,
+              py: 20,
+              mb: 30,
+              "&:hover": {
+                bg: "#ffff34",
+              },
+            }}
+          >
+            Start your Dragon Quizz
+          </Link>
+          <p
+            sx={{
+              fontSize: 18,
+              fontWeight: "bold",
+              color: "#fff",
+              maxWidth: 900,
+              span: { color: "orange" },
+            }}
+            dangerouslySetInnerHTML={{ __html: sentenceFive }}
+          />
+        </Container>
+      </div>
       <div
         sx={{
           section: { py: [50, 100] },

@@ -124,6 +124,13 @@ export const fragments = graphql`
   }
 
   fragment homeSections on WpPage {
+    homeHero {
+      sentenceOne
+      sentenceTwo
+      sentenceThree
+      sentenceFour
+      sentenceFive
+    }
     homeSectionOne {
       sectionOneTitle
       sectionOneContent

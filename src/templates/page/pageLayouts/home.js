@@ -31,16 +31,18 @@ export const Home = ({ data }) => {
         <Container sx={{ maxWidth: 1280, pt: 30, pb: 60 }}>
           <div
             sx={{
-              pl: 130,
+              pl: [0, 80, 130],
               position: "relative",
               "&:before": {
                 content: "''",
                 width: 114,
                 height: 137,
                 backgroundImage: `url(${arrow})`,
+                backgroundSize: ["0%", "40%", "70%"],
+                backgroundRepeat: "no-repeat",
                 position: "absolute",
                 left: 0,
-                bottom: 0,
+                bottom: -40,
               },
             }}
           >
@@ -52,7 +54,7 @@ export const Home = ({ data }) => {
             <h1
               sx={{
                 color: "orange",
-                fontSize: 70,
+                fontSize: [30, 50, 70],
                 lineHeight: 1,
                 fontFamily: "heading",
                 fontWeight: "bold",
@@ -61,11 +63,15 @@ export const Home = ({ data }) => {
               dangerouslySetInnerHTML={{ __html: sentenceTwo }}
             />
 
-            <div sx={{ fontSize: 30, color: "#fff", fontWeight: 300 }}>
+            <div sx={{ fontSize: [20, 30], color: "#fff", fontWeight: 300 }}>
               {sentenceThree}
             </div>
             <h2
-              sx={{ fontSize: 87, fontFamily: "heading", fontWeight: "bold" }}
+              sx={{
+                fontSize: [36, 60, 87],
+                fontFamily: "heading",
+                fontWeight: "bold",
+              }}
             >
               {sentenceFour}
             </h2>
@@ -73,7 +79,7 @@ export const Home = ({ data }) => {
           <Link
             to="/quizz"
             sx={{
-              width: 967,
+              width: ["100%", "100%", "100%", 967],
               display: "block",
               textAlign: "center",
               bg: "#ecdd2e",
@@ -105,7 +111,7 @@ export const Home = ({ data }) => {
           section: { py: [50, 100] },
           ".leftImage": {
             display: "inlineBlock",
-            float: "left",
+            float: ["none", "none", "left"],
             maxWidth: 449,
             p: "25px 50px 0",
             width: "100%",
@@ -114,10 +120,12 @@ export const Home = ({ data }) => {
       >
         <section className="sectionOne" sx={{ textAlign: "center" }}>
           <Container sx={{ maxWidth: 1200 }}>
-            <h2 sx={{ fontSize: 50, color: "green" }}>{sectionOneTitle}</h2>
+            <h2 sx={{ fontSize: [30, 30, 30, 50], color: "green" }}>
+              {sectionOneTitle}
+            </h2>
             <div
               dangerouslySetInnerHTML={{ __html: sectionOneContent }}
-              sx={{ p: { fontSize: 30 } }}
+              sx={{ p: { fontSize: [20, 20, 20, 30] } }}
             />
           </Container>
         </section>
@@ -127,20 +135,20 @@ export const Home = ({ data }) => {
         >
           <Container sx={{ maxWidth: 1200, color: "#fff" }}>
             <h2 sx={{ textAlign: "center", mb: 80 }}>Dr. Daniel Amen</h2>
-            <img className="leftImage" src={drAmen} />
+            <div
+              sx={{
+                display: ["flex", "flex", "inline"],
+                justifyContent: "center",
+              }}
+            >
+              <img className="leftImage" src={drAmen} />
+            </div>
             <div
               dangerouslySetInnerHTML={{ __html: sectionTwoContent }}
               sx={{
-                fontSize: 30,
-                p: { fontSize: 30 },
+                fontSize: [20, 20, 20, 30],
+                p: { fontSize: [20, 20, 20, 30] },
                 ".yellow": { color: "orange" },
-                img: {
-                  display: "inlineBlock !important",
-                  maxWidth: 449,
-                  float: "left",
-                  p: "25px 50px 0px",
-                  width: "100%",
-                },
               }}
             />
           </Container>
@@ -228,7 +236,14 @@ export const Home = ({ data }) => {
         </div>
         <section className="sectionFour" sx={{ bg: "lightGrey" }}>
           <Container sx={{ maxWidth: 1200 }}>
-            <img className="leftImage" src={book} />
+            <div
+              sx={{
+                display: ["flex", "flex", "inline"],
+                justifyContent: "center",
+              }}
+            >
+              <img className="leftImage" src={book} />
+            </div>
             <div
               dangerouslySetInnerHTML={{ __html: sectionFourContent }}
               sx={{

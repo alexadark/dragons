@@ -52,7 +52,7 @@ export const a = {
 }
 
 export const p = {
-  fontSize: [24, 30],
+  fontSize: [20, 20, 20, 30],
   lineHeight: "body",
   mb: 30,
 }

@@ -74,8 +74,12 @@ export const fragments = graphql`
         ... on WpDragon {
           title
           databaseId
+          slug
           featuredImage {
             node {
+              localFile {
+                publicURL
+              }
               ...dragonResultSmallImage
             }
           }

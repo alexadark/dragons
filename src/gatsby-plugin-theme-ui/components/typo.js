@@ -8,7 +8,7 @@ export const fonts = {
 export const fontWeights = {
   body: 400,
   heading: "bold",
-  bold: 600,
+  bold: 700,
   black: 900,
 }
 
@@ -52,8 +52,9 @@ export const a = {
 }
 
 export const p = {
-  fontSize: ["xs"],
+  fontSize: [24, 30],
   lineHeight: "body",
+  mb: 30,
 }
 
 export const h1 = {
@@ -63,7 +64,7 @@ export const h1 = {
 }
 export const h2 = {
   ...heading,
-  fontSize: ["l", "xl"],
+  fontSize: ["xl", "xxl"],
   mt: "xxs",
 }
 

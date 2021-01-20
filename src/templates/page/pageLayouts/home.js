@@ -2,7 +2,6 @@
 import { jsx, Container, Flex } from "theme-ui"
 import React from "react"
 import { Link } from "gatsby"
-import { HomeHero, ImageFluid } from "../../../components"
 import bg1 from "./images/bg-1.jpg"
 import bg2 from "./images/bg-2.jpg"
 import paperDragon from "./images/paper-dragon.png"
@@ -11,10 +10,6 @@ import book from "./images/book.png"
 import arrow from "./images/arrow.png"
 
 export const Home = ({ data }) => {
-  const {
-    homeFields: { homeSteps, heroImage, homeTitle, homeSubtitle },
-  } = data.wpPage
-
   const {
     homeHero: {
       sentenceOne,

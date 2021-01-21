@@ -31,6 +31,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   const resultsTitlesArray = detectedDragonsData?.map(dragon => {
     return dragon.title
   })
+
   const resultsTitles = resultsTitlesArray.join(" - ")
 
   const [resultId, setResultId] = useState(null)
@@ -56,7 +57,6 @@ export const SubmitForm = ({ detectedDragonsData }) => {
         },
       })
       navigate(`${resultId}`, { replace: true })
-      // console.log("mailData", data)
     }
   }, [resultId])
 
@@ -82,15 +82,16 @@ export const SubmitForm = ({ detectedDragonsData }) => {
 
   const createEmailInput = mailData => {
     const { email, firstName } = mailData
+    let _titleHTML = `<ul>`
+    resultsTitlesArray.forEach(title => (_titleHTML += `<li>${title}</li>`))
+    _titleHTML += `</ul>`
     return {
       clientMutationId: Date.now().toString(),
       to: email,
       from: "Dragon App<alexadark@gmail.com>",
       subject: "Your Results Are IN!",
       body: `<p style="color:red; font-size:30px">Thank you for taking my Dragons from the Past Quiz. Based on your answers, the following Dragons have been detected:</p>
-      <ul>
-      ${resultsTitlesArray.forEach(title => <li>{title}</li>)}
-      </ul>
+      ${_titleHTML}
       <p>Dragons from the Past are issues from memories and events in your life that continue to breathe fire on your emotional brain. Unless you recognize and tame your inner Dragons, they can steal your happiness, damage your relationships, steal your health, rob your ability to cope with stress, and limit your destiny. When Dragons control your brain, they can contribute to anxiety, depression, addictions, and other mental health conditions. And your entire life suffers.</p>
       <p>The good news is that you have an opportunity to change that. Once you become aware of and tame your Dragons, you can break bad habits, shut down self-defeating thoughts, shore up your capacity to cope with uncertainty, and live your best life.</p>
       <p>Getting to know your Dragons is the first step in learning to tame them so you can gain control of your emotions and optimize your life.

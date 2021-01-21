@@ -206,10 +206,11 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       <h2
         sx={{
           textTransform: "uppercase",
-          color: "orange",
+          color: "green",
           fontSize: 40,
           textAlign: "center",
-          fontWeight: 400,
+          fontWeight: 600,
+          mb: 40,
         }}
       >
         where should we send your results?
@@ -270,7 +271,8 @@ const styles = {
   'input[type="submit"]': {
     variant: "buttons.primary",
     bg: "transparent",
-    width: 233,
+    // width: 233,
+    fontSize: 18,
     "&:hover": { color: "#fff", bg: "primary" },
   },
 }

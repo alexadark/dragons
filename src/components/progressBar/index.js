@@ -17,7 +17,7 @@ export const ProgressBar = ({ progress }) => {
       <div
         className="progress"
         sx={{
-          bg: "orange",
+          bg: "green",
           width: progress,
           height: "100%",
           variant: "transitions.m",

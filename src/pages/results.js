@@ -41,7 +41,7 @@ const Results = () => {
       <div sx={{ bg: "grey", py: 25, textAlign: "center", color: "#fff" }}>
         <Container>
           <h1 sx={{ m: 0 }}>
-            Know Your HiDDEN Dragons Quiz{" "}
+            Know Your HIDDEN Dragons Quiz{" "}
             <span sx={{ color: "orange" }}>RESULTS</span>
           </h1>
         </Container>

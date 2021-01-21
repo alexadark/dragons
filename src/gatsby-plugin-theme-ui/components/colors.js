@@ -11,8 +11,8 @@ export const colors = {
   lightGrey,
   mediumGrey,
   borderColor: mediumGrey,
-  primary: orange,
-  secondary: green,
+  primary: green,
+  secondary: orange,
   text: grey,
   background: "#fff",
 }

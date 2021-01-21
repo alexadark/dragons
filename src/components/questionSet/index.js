@@ -136,8 +136,8 @@ export const QuestionSet = ({ dragons }) => {
               width: 215,
               height: 51,
               border: "2px solid",
-              borderColor: "orange",
-              fontSize: 24,
+              borderColor: "green",
+              fontSize: 18,
               fontFamily: "heading",
               textTransform: "uppercase",
               display: "flex",
@@ -150,7 +150,7 @@ export const QuestionSet = ({ dragons }) => {
               cursor: "pointer",
 
               "&:hover": {
-                bg: "orange",
+                bg: "green",
                 color: "#fff",
               },
             }}

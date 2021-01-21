@@ -27,9 +27,12 @@ const SEND_EMAIL = gql`
 export const SubmitForm = ({ detectedDragonsData }) => {
   const resultsIds =
     detectedDragonsData && detectedDragonsData.map(dragon => dragon.databaseId)
-  const resultsTitles = detectedDragonsData?.map(dragon => {
-    return dragon.title
-  })
+  const resultsTitles = detectedDragonsData
+    ?.map(dragon => {
+      return dragon.title
+    })
+    .join(", ")
+
   const [resultId, setResultId] = useState(null)
   const [resultErrors, setResultErrors] = useState(null)
   const [mailData, setMailData] = useState(null)
@@ -60,14 +63,21 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   const createResultsInput = mailData => {
     const { email, firstName, age } = mailData
 
+    const results = `
+    Name: ${firstName},
+    Age: ${age},
+    Email: ${email},
+    Dragons Detected:${resultsTitles}
+    `
+
     return {
       clientMutationId: id,
       emailInput: email,
       slugInput: id,
       firstNameInput: firstName,
       ageInput: age,
-      resultsInput: resultsIds,
-      resultsTitlesInput: resultsTitles,
+      dragonsInput: resultsIds,
+      resultsInput: results,
     }
   }
 

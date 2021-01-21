@@ -24,7 +24,6 @@ export const radioStyles = {
     fontSize: 14,
     cursor: "pointer",
     variant: "transitions.s",
-    pt: 5,
   },
   input: {
     cursor: "pointer",

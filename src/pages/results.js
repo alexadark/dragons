@@ -38,7 +38,7 @@ const Results = () => {
   return (
     <Layout>
       <SEO title="results" />
-      <div sx={{ bg: "grey", py: 25, textAlign: "center", color: "#fff" }}>
+      <div sx={{ bg: "green", py: 25, textAlign: "center", color: "#fff" }}>
         <Container>
           <h1 sx={{ m: 0 }}>
             Know Your HIDDEN Dragons Quiz{" "}

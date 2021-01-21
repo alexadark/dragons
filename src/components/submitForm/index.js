@@ -36,7 +36,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     return dragon.title
   })
 
-  const resultsTitles = resultsTitlesArray.join(" - ")
+  const resultsTitles = resultsTitlesArray?.join(" - ")
 
   const [resultId, setResultId] = useState(null)
   const [resultErrors, setResultErrors] = useState(null)

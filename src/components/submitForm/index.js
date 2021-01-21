@@ -27,11 +27,11 @@ const SEND_EMAIL = gql`
 export const SubmitForm = ({ detectedDragonsData }) => {
   const resultsIds =
     detectedDragonsData && detectedDragonsData.map(dragon => dragon.databaseId)
-  const resultsTitles = detectedDragonsData
-    ?.map(dragon => {
-      return dragon.title
-    })
-    .join(" - ")
+
+  const resultsTitlesArray = detectedDragonsData?.map(dragon => {
+    return dragon.title
+  })
+  const resultsTitles = resultsTitlesArray.join(" - ")
 
   const [resultId, setResultId] = useState(null)
   const [resultErrors, setResultErrors] = useState(null)
@@ -89,7 +89,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       subject: "Your Results Are IN!",
       body: `<p style="color:red; font-size:30px">Thank you for taking my Dragons from the Past Quiz. Based on your answers, the following Dragons have been detected:</p>
       <ul>
-      ${resultsTitles.split("-").foreach(title => <li>{title}</li>)}
+      ${resultsTitlesArray.forEach(title => <li>{title}</li>)}
       </ul>
       <p>Dragons from the Past are issues from memories and events in your life that continue to breathe fire on your emotional brain. Unless you recognize and tame your inner Dragons, they can steal your happiness, damage your relationships, steal your health, rob your ability to cope with stress, and limit your destiny. When Dragons control your brain, they can contribute to anxiety, depression, addictions, and other mental health conditions. And your entire life suffers.</p>
       <p>The good news is that you have an opportunity to change that. Once you become aware of and tame your Dragons, you can break bad habits, shut down self-defeating thoughts, shore up your capacity to cope with uncertainty, and live your best life.</p>

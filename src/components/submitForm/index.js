@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useMutation, gql } from "@apollo/client"
 import { navigate } from "gatsby"
+import config from "../../../config"
+import slashes from "remove-trailing-slash"
+
+const url = slashes(config.siteUrl)
 
 const RESULT_MUTATION = gql`
   mutation($input: ResultMutationInput!) {
@@ -61,11 +65,12 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   }, [resultId])
 
   const createResultsInput = mailData => {
-    const { email, firstName, age } = mailData
+    const { email, firstName, phone } = mailData
 
     const results = `
     Name: ${firstName},
     Email: ${email},
+    Phone: ${phone},
     Dragons Detected:${resultsTitles}
     `
 
@@ -74,7 +79,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       emailInput: email,
       slugInput: id,
       firstNameInput: firstName,
-      ageInput: age,
+      phoneInput: phone,
       dragonsInput: resultsIds,
       resultsInput: results,
     }
@@ -83,26 +88,81 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   const createEmailInput = mailData => {
     const { email, firstName } = mailData
     let _titleHTML = `<ul>`
-    resultsTitlesArray.forEach(title => (_titleHTML += `<li>${title}</li>`))
+    resultsTitlesArray.forEach(
+      title =>
+        (_titleHTML += `<li style="font-family: 'Open Sans', sans-serif; text-transform: uppercase">${title}</li>`)
+    )
     _titleHTML += `</ul>`
     return {
       clientMutationId: Date.now().toString(),
       to: email,
       from: "Dragon App<alexadark@gmail.com>",
       subject: "Your Results Are IN!",
-      body: `<p style="color:red; font-size:30px">Thank you for taking my Dragons from the Past Quiz. Based on your answers, the following Dragons have been detected:</p>
-      ${_titleHTML}
-      <p>Dragons from the Past are issues from memories and events in your life that continue to breathe fire on your emotional brain. Unless you recognize and tame your inner Dragons, they can steal your happiness, damage your relationships, steal your health, rob your ability to cope with stress, and limit your destiny. When Dragons control your brain, they can contribute to anxiety, depression, addictions, and other mental health conditions. And your entire life suffers.</p>
-      <p>The good news is that you have an opportunity to change that. Once you become aware of and tame your Dragons, you can break bad habits, shut down self-defeating thoughts, shore up your capacity to cope with uncertainty, and live your best life.</p>
-      <p>Getting to know your Dragons is the first step in learning to tame them so you can gain control of your emotions and optimize your life.
-      </p>
-      <p>Click below to download your FREE report to discover more about the origins of your Dragons, what triggers them, and the reactions they cause.</p>
-      <a href="results/${resultId}"> GET MY FREE DRAGONS REPORT</a>
-      <p>Congratulations! You’re on your way to becoming a Dragon Tamer!</p>
-      <p>To your brain health,</p>
-      <p>Daniel G. Amen, MD</p>
-      <em>P.S. Want to learn more about your dragons? Check out my book Your Brain Is Always Listening, which gives you simple strategies to tame your Dragons. When you pre-order, you’ll receive exclusive bonus gifts that will help you become a powerful Dragon Tamer.
-      </em>
+      body: `<p style="font-family: 'Open Sans', sans-serif">
+      Thank you for taking my Dragons from the Past Quiz. Based on your answers, the
+      following Dragons have been detected:
+    </p>
+    ${_titleHTML}
+    <p style="font-family: 'Open Sans', sans-serif">
+      Dragons from the Past are issues from memories and events in your life that
+      continue to breathe fire on your emotional brain. Unless you recognize and
+      tame your inner Dragons, they can steal your happiness, damage your
+      relationships, steal your health, rob your ability to cope with stress, and
+      limit your destiny. When Dragons control your brain, they can contribute to
+      anxiety, depression, addictions, and other mental health conditions. And your
+      entire life suffers.
+    </p>
+    <p style="font-family: 'Open Sans', sans-serif">
+      The good news is that you have an opportunity to change that. Once you become
+      aware of and tame your Dragons, you can break bad habits, shut down
+      self-defeating thoughts, shore up your capacity to cope with uncertainty, and
+      live your best life.
+    </p>
+    <p style="font-family: 'Open Sans', sans-serif">
+      Getting to know your Dragons is the first step in learning to tame them so you
+      can gain control of your emotions and optimize your life.
+    </p>
+    <p style="font-family: 'Open Sans', sans-serif">
+      Click below to download your FREE report to discover more about the origins of
+      your Dragons, what triggers them, and the reactions they cause.
+    </p>
+    <div style="display: flex; justify-content: center">
+      <a
+        href="${url}/results/${resultId}"
+        target="_blank"
+        style="
+          display: block;
+          background: #ecdd2e;
+          text-align: center;
+          text-transform: uppercase;
+          font-size: 30px;
+          padding: 20px 80px;
+          max-width: 300px;
+          font-family: 'Open Sans', sans-serif;
+          text-decoration: none;
+          font-size: 16px;
+          color: black;
+          font-weight: 600;
+          margin: 30px 10px;
+        "
+      >
+        GET MY FREE DRAGONS REPORT</a
+      >
+    </div>
+    <p style="font-family: 'Open Sans', sans-serif">
+      Congratulations! You’re on your way to becoming a Dragon Tamer!
+    </p>
+    <p style="font-family: 'Open Sans', sans-serif">To your brain health,</p>
+    <p style="font-family: 'Open Sans', sans-serif">Daniel G. Amen, MD</p>
+    <em style="font-family: 'Open Sans', sans-serif"
+      >P.S. Want to learn more about your dragons? Check out my book
+      <a href="https://yourbrainisalwayslistening.com/" target="_blank"
+        >Your Brain Is Always Listening</a
+      >, which gives you simple strategies to tame your Dragons. When you
+      <a href="https://yourbrainisalwayslistening.com/" target="_blank">pre-order</a
+      >, you’ll receive exclusive bonus gifts that will help you become a powerful
+      Dragon Tamer.
+    </em>
       `,
     }
   }
@@ -165,11 +225,11 @@ export const SubmitForm = ({ detectedDragonsData }) => {
           {errors.firstName && "First Name is required"}
           <input
             type="text"
-            name="age"
-            placeholder="Age"
+            name="phone"
+            placeholder="Phone Number"
             ref={register({ required: true })}
           />
-          {errors.age && "Age is Required"}
+          {errors.phone && "Phone is Required"}
           <input
             type="email"
             name="email"

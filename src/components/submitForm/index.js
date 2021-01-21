@@ -31,7 +31,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     ?.map(dragon => {
       return dragon.title
     })
-    .join(", ")
+    .join(" - ")
 
   const [resultId, setResultId] = useState(null)
   const [resultErrors, setResultErrors] = useState(null)

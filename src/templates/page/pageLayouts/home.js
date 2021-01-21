@@ -27,12 +27,21 @@ export const Home = ({ data }) => {
 
   return (
     <>
-      <div className="homeHero" sx={{ backgroundImage: `url(${bg1}) ` }}>
-        <Container sx={{ maxWidth: 1280, pt: 30, pb: 60 }}>
+      <div
+        className="homeHero"
+        sx={{
+          backgroundImage: `url(${bg1})`,
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+        }}
+      >
+        <Container sx={{ maxWidth: 1280, pt: 30, pb: 50 }}>
           <div
             sx={{
               pl: [0, 80, 130],
               position: "relative",
+              textAlign: ["center", "left", "left"],
               "&:before": {
                 content: "''",
                 width: 114,
@@ -85,8 +94,8 @@ export const Home = ({ data }) => {
               bg: "#ecdd2e",
               textTransform: "uppercase",
               fontSize: 18,
-              py: 20,
-              mb: 30,
+              py: 13,
+              mb: [10, 30],
               "&:hover": {
                 bg: "#ffff34",
               },
@@ -96,7 +105,7 @@ export const Home = ({ data }) => {
           </Link>
           <p
             sx={{
-              fontSize: 18,
+              fontSize: [16, 20],
               fontWeight: "bold",
               color: "#fff",
               maxWidth: 900,
@@ -110,31 +119,47 @@ export const Home = ({ data }) => {
         sx={{
           section: { py: [50, 100] },
           ".leftImage": {
-            display: "inlineBlock",
-            float: ["none", "none", "left"],
-            maxWidth: 449,
-            p: "25px 50px 0",
+            display: ["inlineBlock", "inline"],
+            float: ["none", "left"],
+            maxWidth: ["80%", 449],
+            p: [0, "25px 50px 0"],
             width: "100%",
           },
         }}
       >
         <section className="sectionOne" sx={{ textAlign: "center" }}>
           <Container sx={{ maxWidth: 1200 }}>
-            <h2 sx={{ fontSize: [30, 30, 30, 50], color: "green" }}>
+            <h2 sx={{ fontSize: [30, 50], color: "green" }}>
               {sectionOneTitle}
             </h2>
+            <iframe
+              src="https://player.vimeo.com/video/502811902"
+              width="640"
+              height="361"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+
             <div
               dangerouslySetInnerHTML={{ __html: sectionOneContent }}
-              sx={{ p: { fontSize: [20, 20, 20, 30] } }}
+              sx={{ p: { fontSize: [20, 30] } }}
             />
           </Container>
         </section>
         <section
           className="sectionTwo"
-          sx={{ backgroundImage: `url(${bg2}) ` }}
+          sx={{
+            backgroundImage: `url(${bg2}) `,
+            backgroundPosition: "center",
+
+            backgroundSize: "cover",
+          }}
         >
           <Container sx={{ maxWidth: 1200, color: "#fff" }}>
-            <h2 sx={{ textAlign: "center", mb: 80 }}>Dr. Daniel Amen</h2>
+            <h2 sx={{ textAlign: "center", mt: 1, mb: [50, 80, 80] }}>
+              Dr. Daniel Amen
+            </h2>
             <div
               sx={{
                 display: ["flex", "flex", "inline"],
@@ -146,8 +171,8 @@ export const Home = ({ data }) => {
             <div
               dangerouslySetInnerHTML={{ __html: sectionTwoContent }}
               sx={{
-                fontSize: [20, 20, 20, 30],
-                p: { fontSize: [20, 20, 20, 30] },
+                fontSize: [16, 30],
+                p: { fontSize: [16, 30] },
                 ".yellow": { color: "orange" },
               }}
             />
@@ -169,9 +194,26 @@ export const Home = ({ data }) => {
               py: [50, 100],
             }}
           >
-            <Container sx={{ maxWidth: 900, mb: 100 }}>
-              <h2 sx={{ fontSize: 36, color: "green" }}>{sectionThreeTitle}</h2>
-              <h3 className="subtitle" sx={{ fontSize: 24 }}>
+            <Container sx={{ maxWidth: 900, mb: 100, px: [0, 0] }}>
+              <h2
+                sx={{
+                  fontWeight: 500,
+                  fontSize: [30, 36],
+                  color: "green",
+                  textAlign: ["left", "center", "center"],
+                }}
+              >
+                {sectionThreeTitle}
+              </h2>
+              <h3
+                className="subtitle"
+                sx={{
+                  fontSize: [20, 24],
+                  color: "#34495e",
+                  textAlign: ["left", "center", "center"],
+                  lineHeight: 1.2,
+                }}
+              >
                 {sectionThreeSubtitle}
               </h3>
             </Container>
@@ -191,7 +233,7 @@ export const Home = ({ data }) => {
                   <div
                     key={databaseId}
                     sx={{
-                      m: "20px 50px",
+                      m: "20px 50px 0",
                       maxHeight: 300,
                     }}
                   >
@@ -219,7 +261,7 @@ export const Home = ({ data }) => {
                           sx={{
                             fontWeight: 600,
                             textAlign: "center",
-                            fontSize: 20,
+                            fontSize: [18, 20],
                             color: "green",
                             fontFamily: "heading",
                           }}
@@ -248,12 +290,13 @@ export const Home = ({ data }) => {
               dangerouslySetInnerHTML={{ __html: sectionFourContent }}
               sx={{
                 // fontSize: 30,
-                ".red": {
+                fontSize: [16, 30],
+                ".red p": {
                   color: "#ff0000",
                   fontStyle: "italic",
                   fontWeight: "bold",
                   textAlign: "center",
-                  fontSize: "40px !important",
+                  fontSize: [20, 40],
                   fontFamily: "heading",
                 },
               }}

@@ -65,7 +65,6 @@ export const SubmitForm = ({ detectedDragonsData }) => {
 
     const results = `
     Name: ${firstName},
-    Age: ${age},
     Email: ${email},
     Dragons Detected:${resultsTitles}
     `
@@ -87,8 +86,23 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       clientMutationId: Date.now().toString(),
       to: email,
       from: "Dragon App<alexadark@gmail.com>",
-      subject: "your Results to Dragons questionnary",
-      body: `Hello ${firstName} these are you results and this is the url for your results "results/${resultId}"`,
+      subject: "Your Results Are IN!",
+      body: `<p style="color:red; font-size:30px">Thank you for taking my Dragons from the Past Quiz. Based on your answers, the following Dragons have been detected:</p>
+      <ul>
+      ${resultsTitles.split("-").foreach(title => <li>{title}</li>)}
+      </ul>
+      <p>Dragons from the Past are issues from memories and events in your life that continue to breathe fire on your emotional brain. Unless you recognize and tame your inner Dragons, they can steal your happiness, damage your relationships, steal your health, rob your ability to cope with stress, and limit your destiny. When Dragons control your brain, they can contribute to anxiety, depression, addictions, and other mental health conditions. And your entire life suffers.</p>
+      <p>The good news is that you have an opportunity to change that. Once you become aware of and tame your Dragons, you can break bad habits, shut down self-defeating thoughts, shore up your capacity to cope with uncertainty, and live your best life.</p>
+      <p>Getting to know your Dragons is the first step in learning to tame them so you can gain control of your emotions and optimize your life.
+      </p>
+      <p>Click below to download your FREE report to discover more about the origins of your Dragons, what triggers them, and the reactions they cause.</p>
+      <a href="results/${resultId}"> GET MY FREE DRAGONS REPORT</a>
+      <p>Congratulations! You’re on your way to becoming a Dragon Tamer!</p>
+      <p>To your brain health,</p>
+      <p>Daniel G. Amen, MD</p>
+      <em>P.S. Want to learn more about your dragons? Check out my book Your Brain Is Always Listening, which gives you simple strategies to tame your Dragons. When you pre-order, you’ll receive exclusive bonus gifts that will help you become a powerful Dragon Tamer.
+      </em>
+      `,
     }
   }
 

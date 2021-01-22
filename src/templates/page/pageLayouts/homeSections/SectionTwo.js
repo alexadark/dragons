@@ -15,7 +15,7 @@ export const SectionTwo = ({ sectionTwo }) => {
         backgroundSize: "cover",
       }}
     >
-      <Container sx={{ maxWidth: 1200, color: "#fff" }}>
+      <Container sx={{ maxWidth: 1050, color: "#fff" }}>
         <h2 sx={{ textAlign: "center", mt: 1, mb: [50, 80, 80] }}>
           Dr. Daniel Amen
         </h2>
@@ -31,7 +31,11 @@ export const SectionTwo = ({ sectionTwo }) => {
           dangerouslySetInnerHTML={{ __html: sectionTwoContent }}
           sx={{
             fontSize: [16, 30],
-            p: { fontSize: [16, 30] },
+            p: {
+              fontSize: [16, 30],
+              textRendering: "optimizeLegibility",
+              textAlign: ["justify !important", "left !important"],
+            },
             ".yellow": { color: "orange" },
           }}
         />

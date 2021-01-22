@@ -5,8 +5,8 @@ import book from "../images/book.png"
 export const SectionFour = ({ sectionFour }) => {
   const { sectionFourContent } = sectionFour
   return (
-    <div className="sectionFour" sx={{ bg: "lightGrey" }}>
-      <Container sx={{ maxWidth: 1200 }}>
+    <section className="sectionFour" sx={{ bg: "lightGrey" }}>
+      <Container sx={{ maxWidth: 1150 }}>
         <div
           sx={{
             display: ["flex", "flex", "inline"],
@@ -20,6 +20,8 @@ export const SectionFour = ({ sectionFour }) => {
           sx={{
             // fontSize: 30,
             fontSize: [16, 30],
+            textRendering: "optimizeLegibility",
+            textAlign: ["justify !important", "left !important"],
             ".red p": {
               color: "#ff0000",
               fontStyle: "italic",
@@ -31,6 +33,6 @@ export const SectionFour = ({ sectionFour }) => {
           }}
         />
       </Container>
-    </div>
+    </section>
   )
 }

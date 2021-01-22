@@ -5,14 +5,18 @@ export const SectionOne = ({ sectionOne }) => {
   const { sectionOneTitle, sectionOneContent } = sectionOne
   return (
     <section className="sectionOne" sx={{ textAlign: "center" }}>
-      <Container sx={{ maxWidth: 1200 }}>
+      <Container sx={{ maxWidth: 1150 }}>
         <h2 sx={{ fontSize: [30, 50], color: "green", mb: 70 }}>
           {sectionOneTitle}
         </h2>
 
         <div
           dangerouslySetInnerHTML={{ __html: sectionOneContent }}
-          sx={{ p: { fontSize: [20, 30] } }}
+          sx={{
+            p: {
+              fontSize: [20, 30],
+            },
+          }}
         />
       </Container>
     </section>

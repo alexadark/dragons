@@ -22,7 +22,7 @@ export const HomeHero = ({ homeHero }) => {
         backgroundSize: "cover",
       }}
     >
-      <Container sx={{ maxWidth: 1280, pt: 30, pb: 50 }}>
+      <Container sx={{ maxWidth: 1290, pt: 30, pb: 50 }}>
         <div
           sx={{
             pl: [0, 80, 130],

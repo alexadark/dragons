@@ -26,7 +26,7 @@ export const Home = ({ data }) => {
       <HomeHero homeHero={homeHero} />
       <div
         sx={{
-          section: { py: [50, 100] },
+          section: { py: [40, 100] },
           ".leftImage": {
             display: ["inlineBlock", "inline"],
             float: ["none", "left"],

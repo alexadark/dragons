@@ -15,7 +15,7 @@ export const SectionThree = ({ sectionThree, allDragons }) => {
     >
       <Container
         sx={{
-          maxWidth: 1280,
+          maxWidth: 1290,
           backgroundImage: `url(${paperDragon})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",

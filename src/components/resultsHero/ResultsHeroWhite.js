@@ -35,7 +35,7 @@ export const ResultsHeroWhite = () => {
               <div sx={{ my: [25, 25], mb: [25, 30], fontSize: [20, 27] }}>
                 <div sx={{ fontSize: [20, 40] }}>
                   <strong>
-                    Your brain is <span sx={{ color: "orange" }}>Always</span>
+                    Your brain is <span sx={{ color: "orange" }}>Always </span>
                     Listening
                   </strong>
                 </div>
@@ -45,7 +45,8 @@ export const ResultsHeroWhite = () => {
             </div>
             <Flex sx={{ justifyContent: "center" }}>
               <a
-                href=""
+                href="https://yourbrainisalwayslistening.com/"
+                targe="_blank"
                 sx={{
                   textTransform: "uppercase",
                   bg: "green",

@@ -62,8 +62,9 @@ export const SectionThree = ({ sectionThree, allDragons }) => {
               <div
                 key={databaseId}
                 sx={{
-                  m: "20px 50px 0",
+                  m: ["20px 5px 0", "20px 50px 0"],
                   maxHeight: 300,
+                  width: ["100%", "auto"],
                 }}
               >
                 <div>
@@ -84,6 +85,8 @@ export const SectionThree = ({ sectionThree, allDragons }) => {
                         height: "auto",
                         maxWidth: 150,
                         "&.abandoned": { maxWidth: 400 },
+                        "&.grief": { maxWidth: 300 },
+                        "&.should": { maxWidth: 270 },
                       }}
                     />
                     <div
@@ -107,7 +110,7 @@ export const SectionThree = ({ sectionThree, allDragons }) => {
           <Link
             to="/quizz"
             sx={{
-              p: "12px 40px",
+              p: ["12px 10px", "12px 40px"],
               border: "2px solid",
               borderColor: "grey",
               color: "grey",

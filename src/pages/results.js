@@ -9,6 +9,7 @@ import {
   Layout,
   SEO,
 } from "../components"
+import { ResultsHeroGreen, ResultsHeroWhite } from "../components/resultsHero"
 
 const Results = () => {
   const allDragons = ls("allDragons")
@@ -38,6 +39,8 @@ const Results = () => {
   return (
     <Layout>
       <SEO title="results" />
+      <ResultsHeroGreen />
+      <ResultsHeroWhite />
       <div sx={{ bg: "green", py: 25, textAlign: "center", color: "#fff" }}>
         <Container>
           <h1 sx={{ m: 0 }}>

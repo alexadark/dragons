@@ -1,12 +1,14 @@
 const config = require("./config")
 const slashes = require("remove-trailing-slash")
 const wpUrl = slashes(config.wordPressUrl)
+const siteUrl = slashes(config.siteUrl)
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Simple WP Starter`,
-    description: `unstyled starter for gatsby wp projects`,
-    author: `@alexadark`,
+    title: `Daniel G. Amen MD - Know Your Dragons Quiz
+    `,
+    description: ` I have created this quick quiz where you just answer a few questions, and you can identify the Dragons that are impacting your life the most`,
+    siteUrl,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

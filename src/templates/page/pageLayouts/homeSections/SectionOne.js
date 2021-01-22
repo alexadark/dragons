@@ -6,7 +6,7 @@ export const SectionOne = ({ sectionOne }) => {
   return (
     <section className="sectionOne" sx={{ textAlign: "center" }}>
       <Container sx={{ maxWidth: 1150 }}>
-        <h2 sx={{ fontSize: [30, 50], color: "green", mb: 70 }}>
+        <h2 sx={{ fontSize: [30, 50], color: "green", mb: [30, 70] }}>
           {sectionOneTitle}
         </h2>
 
@@ -15,6 +15,10 @@ export const SectionOne = ({ sectionOne }) => {
           sx={{
             p: {
               fontSize: [20, 30],
+            },
+            iframe: {
+              height: [200, 360],
+              width: "100%",
             },
           }}
         />

@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
+import React from "react"
 import ls from "local-storage"
 import { Router } from "@reach/router"
+
 import {
   SmallDetectedDragons,
   SubmitForm,
@@ -11,7 +13,8 @@ import {
 } from "../components"
 import { ResultsHeroGreen, ResultsHeroWhite } from "../components/resultsHero"
 
-const Results = () => {
+const Results = ({ params }) => {
+  console.log("params", Object.keys(params).length)
   const allDragons = ls("allDragons")
 
   const localAnswers = ls("localAnswers")
@@ -39,8 +42,12 @@ const Results = () => {
   return (
     <Layout>
       <SEO title="results" />
-      <ResultsHeroGreen />
-      <ResultsHeroWhite />
+      {Object.keys(params).length > 0 && (
+        <>
+          <ResultsHeroGreen />
+          <ResultsHeroWhite />
+        </>
+      )}
       <div sx={{ bg: "green", py: 25, textAlign: "center", color: "#fff" }}>
         <Container>
           <h1 sx={{ m: 0 }}>

@@ -11,6 +11,7 @@ export const ResultsHeroGreen = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        overflow: "hidden",
       }}
     >
       <Container sx={{ maxWidth: 1290 }}>
@@ -22,13 +23,14 @@ export const ResultsHeroGreen = () => {
               color: "#fff",
               width: ["100%", "66%"],
               mt: [40, 100],
+              pl: 20,
             }}
           >
             <h1
               sx={{
                 color: "orange",
                 textTransform: "uppercase",
-                fontSize: [30, 60],
+                fontSize: [30, 45, 60],
                 fontWeight: 500,
               }}
             >

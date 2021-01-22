@@ -13,7 +13,9 @@ export const SectionFour = ({ sectionFour }) => {
             justifyContent: "center",
           }}
         >
-          <img className="leftImage" src={book} />
+          <div>
+            <img className="leftImage" src={book} />
+          </div>
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: sectionFourContent }}

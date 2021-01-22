@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Flex, Box } from "theme-ui"
+import { jsx, Container, Flex } from "theme-ui"
 import book from "../../images/results-book.png"
 
 export const ResultsHeroWhite = () => {

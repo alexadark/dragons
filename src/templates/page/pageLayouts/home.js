@@ -129,17 +129,9 @@ export const Home = ({ data }) => {
       >
         <section className="sectionOne" sx={{ textAlign: "center" }}>
           <Container sx={{ maxWidth: 1200 }}>
-            <h2 sx={{ fontSize: [30, 50], color: "green" }}>
+            <h2 sx={{ fontSize: [30, 50], color: "green", mb: 70 }}>
               {sectionOneTitle}
             </h2>
-            <iframe
-              src="https://player.vimeo.com/video/502811902"
-              width="640"
-              height="361"
-              frameborder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-            ></iframe>
 
             <div
               dangerouslySetInnerHTML={{ __html: sectionOneContent }}
@@ -273,6 +265,25 @@ export const Home = ({ data }) => {
                   </div>
                 )
               })}
+            </Flex>
+            <Flex sx={{ justifyContent: "center" }}>
+              <Link
+                to="/quizz"
+                sx={{
+                  p: "12px 40px",
+                  border: "2px solid",
+                  borderColor: "grey",
+                  color: "grey",
+                  borderRadius: 4,
+                  textTransform: "uppercase",
+                  fontSize: "120%",
+                  textAlign: "center",
+                  mt: [40, 60, 80],
+                  width: ["100%", "100%", 826],
+                }}
+              >
+                Discover your dragons now
+              </Link>
             </Flex>
           </Container>
         </div>

@@ -1,4 +1,4 @@
-const grey = "#42454e"
+const grey = "#2f4e4d"
 const lightGrey = "#f2f2f2"
 const mediumGrey = "#979797"
 const orange = "#ecdd2e"

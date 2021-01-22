@@ -1,1 +1,29 @@
-{"timestamp":1599973519952,"hash":"69f93ba3732e481872378e9722720a92","assets":{"/quizz/":{"/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2":true,"/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2":true,"/static/spartan-latin-600-7129d0676101518a6c182ab6bddddb8b.woff2":true},"/":{"/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2":true,"/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2":true,"/static/spartan-latin-700-cecb4f2827e18fc31c1fd5140cb9d0b4.woff2":true},"/404/":{"/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2":true,"/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2":true},"/results/":{"/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2":true,"/static/spartan-latin-600-7129d0676101518a6c182ab6bddddb8b.woff2":true,"/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2":true},"/404.html":{"/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2":true,"/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2":true}}}
+{
+  "timestamp": 1599973519952,
+  "hash": "69f93ba3732e481872378e9722720a92",
+  "assets": {
+    "/quiz/": {
+      "/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2": true,
+      "/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2": true,
+      "/static/spartan-latin-600-7129d0676101518a6c182ab6bddddb8b.woff2": true
+    },
+    "/": {
+      "/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2": true,
+      "/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2": true,
+      "/static/spartan-latin-700-cecb4f2827e18fc31c1fd5140cb9d0b4.woff2": true
+    },
+    "/404/": {
+      "/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2": true,
+      "/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2": true
+    },
+    "/results/": {
+      "/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2": true,
+      "/static/spartan-latin-600-7129d0676101518a6c182ab6bddddb8b.woff2": true,
+      "/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2": true
+    },
+    "/404.html": {
+      "/static/spartan-latin-400-030d4b183028e57341ec71529381e119.woff2": true,
+      "/static/bebas-neue-latin-400-e2b2c0d01e61f177b020ff2381008139.woff2": true
+    }
+  }
+}

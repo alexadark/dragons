@@ -70,7 +70,7 @@ export const HomeHero = ({ homeHero }) => {
           </h2>
         </div>
         <Link
-          to="/quizz"
+          to="/quiz"
           sx={{
             width: ["100%", "100%", "100%", 967],
             display: "block",
@@ -85,7 +85,7 @@ export const HomeHero = ({ homeHero }) => {
             },
           }}
         >
-          Start your Dragon Quizz
+          Start your Dragon Quiz
         </Link>
         <p
           sx={{

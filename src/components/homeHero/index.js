@@ -32,7 +32,7 @@ export const HomeHero = ({ img }) => {
             On your<span sx={{ color: "green" }}> Emotional </span>Brain?
             <Flex sx={{ justifyContent: "center", mt: 30 }}>
               <Link
-                to="/quizz"
+                to="/quiz"
                 sx={{
                   variant: "buttons.primary",
                   color: "#fff",

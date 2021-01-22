@@ -108,7 +108,7 @@ export const SectionThree = ({ sectionThree, allDragons }) => {
         </Flex>
         <Flex sx={{ justifyContent: "center" }}>
           <Link
-            to="/quizz"
+            to="/quiz"
             sx={{
               p: ["12px 10px", "12px 40px"],
               border: "2px solid",

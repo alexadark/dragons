@@ -22,7 +22,7 @@ const Page = ({ data }) => {
     <Layout>
       <SEO title={title} />
       {slug.includes("home") && <Home data={data} />}
-      {slug.includes("quizz") && <Quizz dragons={dragons} />}
+      {slug.includes("quiz") && <Quizz dragons={dragons} />}
     </Layout>
   )
 }

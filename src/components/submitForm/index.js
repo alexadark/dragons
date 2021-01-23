@@ -96,7 +96,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     return {
       clientMutationId: Date.now().toString(),
       to: email,
-      from: "Dragon App<alexadark@gmail.com>",
+      from: "Dr. Amen <no-reply@knowyourdragons.com>",
       subject: "Your Results Are IN!",
       body: `<p style="font-family: 'Open Sans', sans-serif">
       Thank you for taking my Dragons from the Past Quiz. Based on your answers, the

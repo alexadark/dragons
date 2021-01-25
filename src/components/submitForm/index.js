@@ -36,7 +36,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     return dragon.title
   })
 
-  const resultsTitles = resultsTitlesArray?.join(" - ")
+  const resultsTitles = resultsTitlesArray?.join(", ")
 
   const [resultId, setResultId] = useState(null)
   const [resultErrors, setResultErrors] = useState(null)
@@ -64,13 +64,14 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     }
   }, [resultId])
 
-  const createResultsInput = mailData => {
+  const createResultsInput = (mailData, resultId) => {
     const { email, firstName, phone } = mailData
 
     const results = `
     Name: ${firstName},
     Email: ${email},
     Phone: ${phone},
+    Results URL: ${url}/results/${resultId},
     Dragons Detected:${resultsTitles}
     `
 
@@ -94,7 +95,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     )
     _titleHTML += `</ul>`
     return {
-      clientMutationId: Date.now().toString(),
+      clientMutationId: id,
       to: email,
       from: "Dr. Amen <no-reply@knowyourdragons.com>",
       subject: "Your Results Are IN!",
@@ -173,15 +174,16 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     try {
       setResultErrors(null)
       setMailData(mailData)
+
       const { data: resultData, errors } = await resultMutation({
         variables: {
-          input: createResultsInput(mailData),
+          input: createResultsInput(mailData, id),
         },
       })
+      setResultId(resultData.resultMutation.clientMutationId)
+
       console.log("resultData", resultData)
       console.log("errors", errors)
-
-      setResultId(resultData.resultMutation.clientMutationId)
 
       reset()
     } catch (error) {

@@ -33,7 +33,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     detectedDragonsData && detectedDragonsData.map(dragon => dragon.databaseId)
 
   const resultsTitlesArray = detectedDragonsData?.map(dragon => {
-    return dragon.title
+    return dragon.title.replace(",", " ")
   })
 
   const resultsTitles = resultsTitlesArray?.join(", ")
@@ -72,7 +72,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     Email: ${email},
     Phone: ${phone},
     Results URL: ${url}/results/${resultId},
-    Dragons Detected:${resultsTitles}
+    ${resultsTitles}
     `
 
     return {

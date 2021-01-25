@@ -47,8 +47,12 @@ export const SmallDragons = ({ dragons }) => {
               const smallDragonImage = done ? darkDragon : whiteDragon
               return (
                 <div className="dragon" key={i} sx={{ position: "relative" }}>
-                  <div sx={{ px: 7 }}>
-                    <img src={smallDragonImage} alt="" sx={{ m: 0 }} />
+                  <div sx={{ px: 7, mb: [40, 20] }}>
+                    <img
+                      src={smallDragonImage}
+                      alt=""
+                      sx={{ m: 0, maxHeight: [30, 30, 40] }}
+                    />
                     <Flex
                       className="detected"
                       sx={{

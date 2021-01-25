@@ -22,11 +22,13 @@ export const FinalDetectedDragon = ({ dragon }) => {
       <Container sx={{ maxWidth: "l" }}>
         <h1 sx={{ textAlign: "center", fontSize: [40, 72] }}>{title}</h1>
         <Flex sx={{ justifyContent: "center" }}>
-          <img
-            src={sourceUrl}
-            alt={`${title}`}
-            sx={{ maxWidth: 450, mt: 30, mb: 60 }}
-          />
+          <div>
+            <img
+              src={sourceUrl}
+              alt={`${title}`}
+              sx={{ maxWidth: 450, mt: 30, mb: 60 }}
+            />
+          </div>
         </Flex>
       </Container>
       <Flex sx={{ flexWrap: ["wrap", "wrap", "nowrap"] }}>

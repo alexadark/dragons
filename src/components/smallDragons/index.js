@@ -19,7 +19,7 @@ export const SmallDragons = ({ dragons }) => {
   }, [])
 
   return (
-    <div sx={{ bg: "green", py: 20 }}>
+    <div sx={{ bg: "green", pt: 20, pb: [0, 20] }}>
       <Container>
         <Flex
           className="smallDragons"
@@ -38,7 +38,7 @@ export const SmallDragons = ({ dragons }) => {
               } = item
 
               const showDetected = detectedDragons.includes(title)
-                ? "visble"
+                ? "visible"
                 : "hidden"
 
               const whiteDragon = dragonSmallWhite?.localFile?.publicURL
@@ -47,7 +47,7 @@ export const SmallDragons = ({ dragons }) => {
               const smallDragonImage = done ? darkDragon : whiteDragon
               return (
                 <div className="dragon" key={i} sx={{ position: "relative" }}>
-                  <div sx={{ px: 7, mb: [40, 20] }}>
+                  <div sx={{ px: 7, mb: [30, 0] }}>
                     <img
                       src={smallDragonImage}
                       alt=""

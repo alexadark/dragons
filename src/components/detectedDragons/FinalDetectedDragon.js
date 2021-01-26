@@ -44,16 +44,16 @@ export const FinalDetectedDragon = ({ dragon }) => {
         >
           <Container
             sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              maxWidth: 650,
+              // display: "flex",
+              // flexWrap: "wrap",
+              maxWidth: 600,
 
               ">div": {
-                width: ["100%", "50%"],
+                // width: ["100%", "50%"],
               },
             }}
           >
-            <div>
+            <div sx={{ mb: 40 }}>
               <h3>Origins - Common When...</h3>
               <div dangerouslySetInnerHTML={{ __html: dragonorigins }} />
             </div>

@@ -182,7 +182,7 @@ export const QuestionSet = ({ dragons }) => {
               },
             }}
           />
-          <button onClick={handleBack}>Back</button>
+          {/* <button onClick={handleBack}>Back</button> */}
         </Flex>
       </form>
 

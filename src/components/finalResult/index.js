@@ -26,7 +26,7 @@ const GET_RESULT = gql`
             dragonFields {
               dragonorigins
               dragonTriggers
-
+              dragonIntro
               dragonReactions
             }
           }

@@ -7,7 +7,12 @@ export const FinalDetectedDragon = ({ dragon }) => {
     featuredImage: {
       node: { sourceUrl },
     },
-    dragonFields: { dragonorigins, dragonTriggers, dragonReactions },
+    dragonFields: {
+      dragonorigins,
+      dragonTriggers,
+      dragonReactions,
+      dragonIntro,
+    },
   } = dragon
 
   return (
@@ -23,6 +28,11 @@ export const FinalDetectedDragon = ({ dragon }) => {
             />
           </div>
         </Flex>
+      </Container>
+      <Container sx={{ maxWidth: 1200 }}>
+        <p sx={{ textAlign: "center", fontSize: "20px", fontWeight: 600 }}>
+          {dragonIntro}
+        </p>
       </Container>
       <Flex sx={{ flexWrap: ["wrap", "wrap", "nowrap"] }}>
         <div

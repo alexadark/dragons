@@ -87,7 +87,7 @@ export const fragments = graphql`
             dragonReactions
             dragonTriggers
             dragonorigins
-
+            dragonIntro
             dragonSmallDark {
               localFile {
                 publicURL

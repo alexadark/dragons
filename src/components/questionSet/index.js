@@ -16,6 +16,7 @@ export const QuestionSet = ({ dragons }) => {
   const state = useContext(GlobalStateContext)
 
   const { currentQuestions, answers } = state
+  console.log("currentQuestions", currentQuestions)
 
   const {
     dragonFields: { dragonQuestions },
@@ -68,12 +69,23 @@ export const QuestionSet = ({ dragons }) => {
         currentQuestions: currentQuestions - 1,
       })
       window.scrollTo(0, 0)
+    } else {
+      dispatch({
+        type: "SET_CURRENT_QUESTIONS",
+        currentQuestions: 0,
+      })
     }
   }
   const onSubmit = data => {
     setAnswers(data)
     reset()
     next()
+  }
+
+  const handleBack = data => {
+    setAnswers(data)
+    reset()
+    back()
   }
 
   return (
@@ -170,7 +182,7 @@ export const QuestionSet = ({ dragons }) => {
               },
             }}
           />
-          <button onClick={back}>Back</button>
+          <button onClick={handleBack}>Back</button>
         </Flex>
       </form>
 

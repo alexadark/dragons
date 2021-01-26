@@ -24,7 +24,7 @@ export const FinalDetectedDragon = ({ dragon }) => {
             <img
               src={sourceUrl}
               alt={`${title}`}
-              sx={{ maxWidth: 450, mt: 30, mb: 60 }}
+              sx={{ maxWidth: [350, 450], mt: 30, mb: 60 }}
             />
           </div>
         </Flex>

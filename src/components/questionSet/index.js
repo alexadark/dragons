@@ -61,10 +61,19 @@ export const QuestionSet = ({ dragons }) => {
     }
   }
 
+  const back = () => {
+    if (currentQuestions > 0) {
+      dispatch({
+        type: "SET_CURRENT_QUESTIONS",
+        currentQuestions: currentQuestions - 1,
+      })
+      window.scrollTo(0, 0)
+    }
+  }
   const onSubmit = data => {
     setAnswers(data)
     reset()
-    next(data)
+    next()
   }
 
   return (
@@ -104,11 +113,11 @@ export const QuestionSet = ({ dragons }) => {
                 <div className="radioContainer">
                   <input
                     type="radio"
-                    id="yes"
+                    id={`yes-${name}`}
                     name={name}
                     value={true}
                     ref={register}
-                    required
+                    // required
                   />
 
                   <label htmlFor="yes">YES</label>
@@ -116,11 +125,11 @@ export const QuestionSet = ({ dragons }) => {
                 <div className="radioContainer">
                   <input
                     type="radio"
-                    id="no"
+                    id={`no-${name}`}
                     name={name}
                     value={false}
                     ref={register}
-                    required
+                    // required
                   />
                   <label htmlFor="no">NO</label>
                 </div>
@@ -161,6 +170,7 @@ export const QuestionSet = ({ dragons }) => {
               },
             }}
           />
+          <button onClick={back}>Back</button>
         </Flex>
       </form>
 

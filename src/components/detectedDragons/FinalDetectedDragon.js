@@ -7,14 +7,7 @@ export const FinalDetectedDragon = ({ dragon }) => {
     featuredImage: {
       node: { sourceUrl },
     },
-    dragonFields: {
-      dragonorigins,
-      dragonTriggers,
-      dragonMoviesTitle,
-      dragonMovies,
-      dragonsTaming,
-      dragonReactions,
-    },
+    dragonFields: { dragonorigins, dragonTriggers, dragonReactions },
   } = dragon
 
   return (
@@ -51,20 +44,12 @@ export const FinalDetectedDragon = ({ dragon }) => {
             }}
           >
             <div>
-              <h3>Origins</h3>
+              <h3>Origins - Common When...</h3>
               <div dangerouslySetInnerHTML={{ __html: dragonorigins }} />
             </div>
             <div>
               <h3>Triggers</h3>
               <div dangerouslySetInnerHTML={{ __html: dragonTriggers }} />
-            </div>
-            <div>
-              <h3>Reactions</h3>
-              <div dangerouslySetInnerHTML={{ __html: dragonReactions }} />
-            </div>
-            <div>
-              <h3>Movies ({dragonMoviesTitle})</h3>
-              <div dangerouslySetInnerHTML={{ __html: dragonMovies }} />
             </div>
           </Container>
         </div>
@@ -78,8 +63,10 @@ export const FinalDetectedDragon = ({ dragon }) => {
           }}
         >
           <div sx={{ maxWidth: 450 }}>
-            <h2 sx={{ color: "orange" }}>How to Tame the {title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: dragonsTaming }} />
+            <h2 sx={{ color: "orange" }}>Reactions</h2>
+            <div>
+              <div dangerouslySetInnerHTML={{ __html: dragonReactions }} />
+            </div>
           </div>
         </Flex>
       </Flex>

@@ -84,12 +84,10 @@ export const fragments = graphql`
             }
           }
           dragonFields {
-            dragonMovies
-            dragonMoviesTitle
             dragonReactions
             dragonTriggers
             dragonorigins
-            dragonsTaming
+
             dragonSmallDark {
               localFile {
                 publicURL

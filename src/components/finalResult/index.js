@@ -26,9 +26,7 @@ const GET_RESULT = gql`
             dragonFields {
               dragonorigins
               dragonTriggers
-              dragonMoviesTitle
-              dragonMovies
-              dragonsTaming
+
               dragonReactions
             }
           }

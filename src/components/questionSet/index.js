@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex } from "theme-ui"
+import { jsx, Flex, Box } from "theme-ui"
 import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import ls from "local-storage"
@@ -16,13 +16,11 @@ export const QuestionSet = ({ dragons }) => {
   const state = useContext(GlobalStateContext)
 
   const { currentQuestions, answers } = state
-  console.log("currentQuestions", currentQuestions)
 
   const {
     dragonFields: { dragonQuestions },
   } = dragons[currentQuestions]
 
-  // const limit = dragonQuestions.length / 2
   const limit = 2
 
   const { register, handleSubmit, errors, reset } = useForm()
@@ -30,25 +28,35 @@ export const QuestionSet = ({ dragons }) => {
   const isDragonDetected = answers =>
     Object.values(answers).filter(item => item === "true").length >= limit
 
+  /**
+   * Adds a new answer to the total answers in context or updates an existing one!
+   * @param {object} data - The data for this answer ({"question-0-1": "true", "question-1-1": "false"}) ...
+   */
   const setAnswers = async data => {
-    console.log("data", data)
+    let _answers = [...answers]
+    const newAnswer = {
+      title: dragons[currentQuestions].title,
+      answers: data,
+      detected: isDragonDetected(data) && true,
+    }
+
+    //we go back to prev answered question
+    if (answers.length > currentQuestions) {
+      _answers[currentQuestions] = newAnswer
+    } else {
+      //new answer
+      _answers = [...answers, newAnswer]
+    }
 
     await dispatch({
       type: "SET_ANSWERS",
-      answers: [
-        ...answers,
-        {
-          title: dragons[currentQuestions].title,
-          answers: data,
-          detected: isDragonDetected(data) && true,
-        },
-      ],
+      answers: _answers,
     })
   }
 
   useEffect(() => {
     ls("localAnswers", answers)
-  }, [state])
+  }, [answers])
 
   const next = () => {
     if (currentQuestions + 1 < dragons.length) {
@@ -82,11 +90,14 @@ export const QuestionSet = ({ dragons }) => {
     next()
   }
 
-  const handleBack = data => {
-    setAnswers(data)
+  const handleBack = e => {
+    e.preventDefault()
     reset()
     back()
   }
+
+  const showBackButton = () =>
+    currentQuestions > 0 && currentQuestions < dragons.length
 
   return (
     <div>
@@ -126,9 +137,13 @@ export const QuestionSet = ({ dragons }) => {
                   <input
                     type="radio"
                     id={`yes-${name}`}
+                    key={`yes-${name}`}
                     name={name}
                     value={true}
                     ref={register}
+                    defaultChecked={
+                      answers[currentQuestions]?.answers[name] === "true"
+                    }
                     required
                   />
 
@@ -138,9 +153,13 @@ export const QuestionSet = ({ dragons }) => {
                   <input
                     type="radio"
                     id={`no-${name}`}
+                    key={`no-${name}`}
                     name={name}
                     value={false}
                     ref={register}
+                    defaultChecked={
+                      answers[currentQuestions]?.answers[name] === "false"
+                    }
                     required
                   />
                   <label htmlFor="no">NO</label>
@@ -151,38 +170,29 @@ export const QuestionSet = ({ dragons }) => {
         })}
         <Flex
           sx={{
-            justifyContent: ["center", "flex-end"],
-            pr: [0, 0, 60],
+            justifyContent: ["center", "space-between"],
+            px: [0, 0, 60],
             pb: [40, 0],
           }}
         >
+          <button
+            onClick={handleBack}
+            sx={{
+              ...buttonStyle,
+              display: [showBackButton() ? "block" : "none", "block"],
+              visibility: showBackButton() ? "visible" : "hidden",
+            }}
+          >
+            Back
+          </button>
+
           <input
             type="submit"
             value="next"
             sx={{
-              width: 215,
-              height: 51,
-              border: "2px solid",
-              borderColor: "green",
-              fontSize: 18,
-              fontFamily: "heading",
-              textTransform: "uppercase",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 14,
-              mt: 25,
-              variant: "transitions.s",
-              bg: "transparent",
-              cursor: "pointer",
-
-              "&:hover": {
-                bg: "green",
-                color: "#fff",
-              },
+              ...buttonStyle,
             }}
           />
-          {/* <button onClick={handleBack}>Back</button> */}
         </Flex>
       </form>
 
@@ -195,4 +205,28 @@ export const QuestionSet = ({ dragons }) => {
       )}
     </div>
   )
+}
+
+const buttonStyle = {
+  width: [125, 215],
+  mx: 10,
+  height: [40, 51],
+  border: "2px solid",
+  borderColor: "green",
+  fontSize: 18,
+  fontFamily: "heading",
+  textTransform: "uppercase",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: 14,
+  mt: 25,
+  variant: "transitions.s",
+  bg: "transparent",
+  cursor: "pointer",
+
+  "&:hover": {
+    bg: "green",
+    color: "#fff",
+  },
 }

@@ -97,7 +97,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
     return {
       clientMutationId: id,
       to: email,
-      from: "Dr. Amen <no-reply@knowyourdragons.com>",
+      from: "Daniel G. Amen, MD <support@amenuniversity.com>",
       subject: "Your Results Are IN!",
       body: `<p style="font-family: 'Open Sans', sans-serif">
       Thank you for taking my Dragons from the Past Quiz. Based on your answers, the

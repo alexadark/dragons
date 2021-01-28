@@ -34,7 +34,7 @@ export const pageQuery = graphql`
     wpPage(uri: { eq: $uri }) {
       title
       slug
-      ...homeFields
+
       ...allDragons
       ...homeSections
     }

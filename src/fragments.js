@@ -52,22 +52,6 @@ export const fragments = graphql`
     }
   }
 
-  # fragment dragonResultLarge on WpDragon {
-  #   title
-  #   featuredImage {
-  #     node {
-  #       ...dragonResultsLargeImage
-  #     }
-  #   }
-  #   dragonFields {
-  #     dragonorigins
-  #     dragonTriggers
-  #     dragonMovies
-  #     dragonMoviesTitle
-  #     dragonsTaming
-  #   }
-  # }
-
   fragment allDragons on WpPage {
     allDragons {
       dragons {
@@ -103,20 +87,6 @@ export const fragments = graphql`
             }
           }
         }
-      }
-    }
-  }
-
-  fragment homeFields on WpPage {
-    homeFields {
-      heroImage {
-        ...dragonHome
-      }
-      homeSubtitle
-      homeTitle
-      homeSteps {
-        stepTitle
-        stepText
       }
     }
   }

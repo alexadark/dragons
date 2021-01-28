@@ -15,6 +15,18 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-preload-fonts`,
     {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: "531032957235317",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "G-3PRSLZMMRK",
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

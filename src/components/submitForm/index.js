@@ -99,7 +99,9 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       to: email,
       from: "Daniel G. Amen, MD <support@amenuniversity.com>",
       subject: "Your Results Are IN!",
-      body: `<p style="font-family: 'Open Sans', sans-serif">
+      body: `
+      <em>*By opt-ing in, you are choosing to subscribe to our BrainMD and/or Amen Clinics email newsletters. You may opt out or change your preferences at any time. If you unsubscribe, you will still receive your results. Your results and information will never be distributed or shared. </em>
+      <p style="font-family: 'Open Sans', sans-serif">
       Thank you for taking my Dragons from the Past Quiz. Based on your answers, the
       following Dragons have been detected:
     </p>

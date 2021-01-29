@@ -6,6 +6,7 @@ import { useMutation, gql } from "@apollo/client"
 import { navigate } from "gatsby"
 import config from "../../../config"
 import slashes from "remove-trailing-slash"
+import { window, document, exists } from "browser-monads"
 
 const url = slashes(config.siteUrl)
 
@@ -175,12 +176,15 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       setResultErrors(null)
       setMailData(mailData)
 
-      const { data: resultData, errors } = await resultMutation({
+      const { data: resultData } = await resultMutation({
         variables: {
           input: createResultsInput(mailData, id),
         },
       })
       setResultId(resultData.resultMutation.clientMutationId)
+      if (window.fbq != null) {
+        window.fbq("track", "Lead")
+      }
 
       reset()
     } catch (error) {

@@ -65,12 +65,11 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   }, [resultId])
 
   const createResultsInput = (mailData, resultId) => {
-    const { email, firstName, phone } = mailData
+    const { email, firstName } = mailData
 
     const results = `
     Name: ${firstName},
     Email: ${email},
-    Phone: ${phone},
     Results URL: ${url}/results/${resultId},
     ${resultsTitles}
     `
@@ -87,7 +86,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
   }
 
   const createEmailInput = mailData => {
-    const { email, firstName } = mailData
+    const { email } = mailData
     let _titleHTML = `<ul>`
     resultsTitlesArray.forEach(
       title =>
@@ -184,9 +183,6 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       })
       setResultId(resultData.resultMutation.clientMutationId)
 
-      console.log("resultData", resultData)
-      console.log("errors", errors)
-
       reset()
     } catch (error) {
       console.log(">>> resultErrors", error)
@@ -228,13 +224,7 @@ export const SubmitForm = ({ detectedDragonsData }) => {
             ref={register({ required: true })}
           />
           {errors.firstName && "First Name is required"}
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone Number"
-            ref={register({ required: true })}
-          />
-          {errors.phone && "Phone is Required"}
+
           <input
             type="email"
             name="email"

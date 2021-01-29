@@ -41,6 +41,11 @@ module.exports = {
         url: `${wpUrl}/graphql`,
         verbose: true,
         excludeFields: [`blocksJSON`, `saveContent`],
+        type: {
+          answers: {
+            limit: process.env.NODE_ENV === `development` ? 5 : null,
+          },
+        },
       },
     },
     {

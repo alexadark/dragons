@@ -79,7 +79,6 @@ export const SubmitForm = ({ detectedDragonsData }) => {
       emailInput: email,
       slugInput: id,
       firstNameInput: firstName,
-      phoneInput: phone,
       dragonsInput: resultsIds,
       resultsInput: results,
     }
